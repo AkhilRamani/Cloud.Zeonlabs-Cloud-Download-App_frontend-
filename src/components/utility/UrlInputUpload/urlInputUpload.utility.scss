@@ -1,0 +1,39 @@
+.uiu-main-div{
+    .uiu-input{
+        height: 50px;
+        flex-grow: 1;
+        border: 0;
+        border-radius: 5px 0 0 5px;
+		padding: 0 15px;
+		font: small-caption	;
+        color: #34495e;
+		line-height: 1.5;
+        outline: none;
+        font-size: 17px;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.226);
+        background-color: rgb(255, 255, 255);
+        // transition: all 150ms ease-in;
+    }
+    ::placeholder{
+        color: #a8a8a8;
+    }
+    // .uiu-input:focus{
+    //     background-color: #eeeeee;
+    // }
+
+    button{
+        min-width: 125px;
+        height: 50px;
+        color: #6d5a18;
+        border: 0;
+        font-size: 15px;
+        font-weight: 600;
+        background-color: #FDD235;
+        border-radius: 0px 5px 5px 0;
+        outline: none
+    };
+    button:hover{
+        cursor: pointer;
+        background-color: #ffc904;
+    }
+}

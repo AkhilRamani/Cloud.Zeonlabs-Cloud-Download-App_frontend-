@@ -1,0 +1,77 @@
+$primary-color: rgb(9, 36, 75);
+$animationTransition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+.fi-container{
+    flex-direction: row;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    width: 28rem;
+    margin: 0 0 20px 20px;
+    transition: $animationTransition;
+    // box-shadow: 1px 2px 5px #dfe7f1;
+    // height: 100px;
+
+    .fi-dot-icon{
+        transition: $animationTransition;
+        fill: #b5bec9
+    }
+}
+.fi-container-active:hover{
+    box-shadow: 0 14px 28px rgba(153, 153, 153, 0.068), 0 10px 10px rgba(66, 66, 66, 0.247);
+    .fi-dot-icon{
+        fill: #555555;
+        cursor: pointer;
+    }
+}
+
+.fi-file-name{
+    color: rgb(9, 36, 75);
+    font-size: 17px;
+    font-weight: 700;
+    margin: 16px 0 0 0;
+    // font-family: 'Roboto', sans-serif;
+}
+.fi-inner-container{
+    margin: 7px 0 16px 0;
+    justify-content: space-between
+}
+
+.fi-dot{
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: $primary-color
+}
+.fi-file-date{
+    color: #b5bec9;
+    margin: 0 0 0 10px;
+    // font-size: 1.02rem
+    font-size: 14px
+}
+
+
+
+//---------> skelaton
+
+.skeleton-line {
+    opacity: 0.72;
+    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(
+      to right,
+      transparent 33%,
+      rgb(233, 233, 233) 50%,
+      transparent 66%
+    );
+    background-size:300% 100%;
+    animation: shine 1.4s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: right;    
+    }
+    /*100% {
+      background-position: left; it's the default value, no need to define it
+    }*/
+  }

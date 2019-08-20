@@ -1,0 +1,90 @@
+// .ddm-main{
+//     position: absolute;
+//     z-index: 9999;
+//     background-color: rgb(249, 249, 249);
+//     min-width: 180px;
+//     padding: 12px;
+//     overflow: auto;
+//     box-shadow: rgba(0, 0, 0, 0.29) 1px 3px 9px 0px;
+//     display: flex;
+//     flex-direction: column
+// }
+
+.ddm-main{
+    $textColor: #212529a2;
+    $textHoverColor: #212529;
+    align-items: center;
+    flex-direction: column;
+    padding: 8px 0;
+
+    svg{
+        fill: $textColor;
+        margin-right: 13px
+    }
+
+    .ddm-text{
+        font-size: 15.5px;
+        font-weight: 400;
+        color: $textColor
+    }
+    .ddm-item {
+        align-self: stretch;
+        cursor: pointer;
+        padding: 10px 13px;
+        height: 28px;
+    }
+    .ddm-item:hover{
+        background-color: #f8f9fa;
+        svg{
+            fill: $textHoverColor
+        }
+        p{
+            color: $textHoverColor
+        }
+    }
+}
+
+.ddm-rename-main{
+    padding: 20px;
+
+    .ddm-rename-sub{
+        align-self: stretch;
+        justify-content: flex-end;
+        margin-top: 2vh
+    }
+    input{
+        background-color: #00000011;
+        font-size: 16.5px;
+        font-weight: 500;
+        padding: 9px 9px;
+        opacity: 0.8;
+    }
+    input:focus,:hover {
+        opacity: 1;
+    }
+    ::placeholder{
+        font-weight: 400
+    }
+}
+
+.popc-main{
+    margin: 20px;
+    .popc-sub-div{
+        margin-bottom: 20px;
+        .popc-sub-text{
+            margin: 0;
+            margin-top: 3px;
+            color: #212529a2;
+            font-size: 14px
+        }
+        .popc-icon{
+            width: 48px;
+            height: 48px;
+            fill: #ff4343;
+            margin-left: -3px
+        }
+    }
+    .popc-btn-div{
+        justify-content: flex-end
+    }
+}

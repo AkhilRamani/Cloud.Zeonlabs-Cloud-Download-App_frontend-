@@ -1,0 +1,40 @@
+body{
+    background-color: #EAF4FE;
+    -webkit-font-smoothing: antialiased;
+    font-family: sans-serif;
+    margin: 0px;
+}
+
+.main-container{
+    margin-left: 380px;
+}
+
+.g-flex{
+    display: flex
+}
+.g-flex-ac{
+    display: flex;
+    align-items: center
+}
+.g-source-sans{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.g-roboto{
+    font-family: 'Roboto', sans-serif;
+    margin: 0
+}
+.p-color-yellow{
+    background-color: #FDD235
+}
+
+.g-round-corner{
+    border-radius: 5
+}
+
+.g-input{
+    border: 0;
+    border-radius: 5px;
+    font: small-caption	;
+    color: #34495e;
+    outline: none;
+}
