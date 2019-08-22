@@ -7,8 +7,8 @@ import {Button} from '../utility/Button/button.utility'
 
 import './dropDownMenu.style.scss'
 import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon} from '../icons/icons'
-import { deleteFile as deleteFileApi } from '../../apis/apis';
-import {deleteFile as deleteReduxFile} from '../../redux/actions/file.action'
+import { deleteFile as deleteFileApi, renameFile as renameFileApi, downloadFile } from '../../apis/apis';
+import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
 
 
 const DdMenuItem = ({name, onClick, Icon}) => (
@@ -27,27 +27,42 @@ const PopupBox = ({trigger, content, closeOutsideClick}) => (
     >{content}</Popup>
 )
 
-const DropDownMenu = ({fileId, close, deleteReduxFile}) => {
+const DropDownMenu = ({fileId, close, deleteReduxFile, renameReduxFile}) => {
     const [loading, setLoading] = useState(false)
+    const [name, setName] = useState('')
+
+    const changeLoadingState = () => setLoading(!loading)
 
     const deleteFile = () => {
-        setLoading(true)
-        console.log('file id =>> ', fileId)
+        changeLoadingState()
         deleteFileApi(fileId)
             .then(res => {
-                setLoading(false);
+                changeLoadingState()
                 deleteReduxFile(res.data._id)
             })
             .catch(e => {
-                setLoading(false);
+                changeLoadingState()
                 console.log(e)
             })
             // .finally(() => setLoading(false))
     }
 
+    const renameFile = () => {
+        changeLoadingState()
+        renameFileApi(fileId, name)
+            .then(res => {
+                changeLoadingState()
+                renameReduxFile(fileId, res.data.name)
+                close()
+            })
+            .catch(e => {
+                changeLoadingState()
+                console.log(e)})
+    }
+
     return (
         <div className="ddm-main g-flex-ac" >
-            <div className="ddm-item g-flex-ac" onClick={() => {close(); toast.notify('Downloading...')}} >
+            <div className="ddm-item g-flex-ac" onClick={() => downloadFile(fileId)} >
                 <DownloadIcon />
                 <p className='ddm-text g-roboto' >Download</p>
             </div>
@@ -65,19 +80,14 @@ const DropDownMenu = ({fileId, close, deleteReduxFile}) => {
             >
                     {close => (
                         <div className='ddm-main ddm-rename-main g-flex-ac' >
-                            <input style={{width: 300}} className='g-input' type='text' placeholder='Enter new file name'  />
+                            <input style={{width: 300}} className='g-input' type='text' placeholder='Enter new file name' onChange={e => setName(e.target.value)} />
                             <div className='ddm-rename-sub g-flex-ac' >
-                                <Button style={{minWidth: 75, }} color='#dedede' name='Cancel' onClick={() => close()} />
-                                <Button style={{minWidth: 75, marginLeft: 13}} name='Rename' />
+                                <Button style={{minWidth: 75, }} color='#dedede' name='Cancel' onClick={() => close()} disabled={loading} />
+                                <Button style={{minWidth: 75, marginLeft: 13}} name='Rename' onClick={renameFile} loading={loading} />
                             </div>
                         </div>
                     )}
             </Popup>
-
-            {/* <div key={id} className="ddm-item g-flex-ac" onClick={() => {close()}} >
-                <RenameIcon />
-                <p className='ddm-text g-roboto' >Rename</p>
-            </div> */}
 
 
             <div className="ddm-item g-flex-ac" onClick={() => close()} >
@@ -113,7 +123,8 @@ const DropDownMenu = ({fileId, close, deleteReduxFile}) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    deleteReduxFile: id => dispatch(deleteReduxFile(id))
+    deleteReduxFile: id => dispatch(deleteReduxFile(id)),
+    renameReduxFile: (id, name) => dispatch(renameReduxFile(id, name))
 })
 
 export default connect(null, mapDispatchToProps)(DropDownMenu)
