@@ -56,7 +56,7 @@ const FileItem = ({id, name, size, time, status}) => {
                     // transformOrigin: '0 0'
                 }}
                 >
-                    {close => <DropDownMenu fileId={id} close={close} />}
+                    {close => <DropDownMenu fileId={id} close={close} fileName={name} />}
                 </Popup>
             </div>
         </div>

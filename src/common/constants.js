@@ -3,6 +3,9 @@ const fileStatus = {
     DONE: 'done'
 }
 
+const serverUrl = 'http://localhost:3000';
+
 export {
-    fileStatus
+    fileStatus,
+    serverUrl
 }

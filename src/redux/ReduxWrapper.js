@@ -5,6 +5,6 @@ import {rootReducer} from './rootReducer';
 
 const createStore = () => reduxCreateStore(rootReducer);
 
-export default ({ element }) => (
-  <Provider store={createStore()}>{element}</Provider>
+export default (props) => (
+  <Provider store={createStore()}>{props.children}</Provider>
 );

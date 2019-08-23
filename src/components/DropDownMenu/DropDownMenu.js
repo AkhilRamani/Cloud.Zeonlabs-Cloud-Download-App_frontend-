@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
-import toast from 'toasted-notes'
 import {connect} from 'react-redux'
+// import toast from 'toasted-notes'
 // import ReactNotification from 'react-notifications-component'
 import Popup from 'reactjs-popup'
 import {Button} from '../utility/Button/button.utility'
 
 import './dropDownMenu.style.scss'
 import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon} from '../icons/icons'
-import { deleteFile as deleteFileApi, renameFile as renameFileApi, downloadFile } from '../../apis/apis';
+import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../apis/apis';
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
+import {serverUrl} from '../../common/constants'
 
 
 const DdMenuItem = ({name, onClick, Icon}) => (
@@ -27,9 +28,9 @@ const PopupBox = ({trigger, content, closeOutsideClick}) => (
     >{content}</Popup>
 )
 
-const DropDownMenu = ({fileId, close, deleteReduxFile, renameReduxFile}) => {
+const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile}) => {
     const [loading, setLoading] = useState(false)
-    const [name, setName] = useState('')
+    const [name, setName] = useState(fileName)
 
     const changeLoadingState = () => setLoading(!loading)
 
@@ -60,9 +61,14 @@ const DropDownMenu = ({fileId, close, deleteReduxFile, renameReduxFile}) => {
                 console.log(e)})
     }
 
+    const downloadFile = () => {
+        window.open(`${serverUrl}/file/download/${fileId}`, '_blank')
+        close()
+    }
+
     return (
         <div className="ddm-main g-flex-ac" >
-            <div className="ddm-item g-flex-ac" onClick={() => downloadFile(fileId)} >
+            <div className="ddm-item g-flex-ac" onClick={downloadFile} >
                 <DownloadIcon />
                 <p className='ddm-text g-roboto' >Download</p>
             </div>
@@ -80,7 +86,7 @@ const DropDownMenu = ({fileId, close, deleteReduxFile, renameReduxFile}) => {
             >
                     {close => (
                         <div className='ddm-main ddm-rename-main g-flex-ac' >
-                            <input style={{width: 300}} className='g-input' type='text' placeholder='Enter new file name' onChange={e => setName(e.target.value)} />
+                            <input style={{width: 300}} className='g-input' type='text' placeholder='Enter new file name' onChange={e => setName(e.target.value)} value={name} />
                             <div className='ddm-rename-sub g-flex-ac' >
                                 <Button style={{minWidth: 75, }} color='#dedede' name='Cancel' onClick={() => close()} disabled={loading} />
                                 <Button style={{minWidth: 75, marginLeft: 13}} name='Rename' onClick={renameFile} loading={loading} />

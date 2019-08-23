@@ -1,22 +1,22 @@
 import axios from 'axios'
-import server_url from './config'
+import {serverUrl} from '../common/constants'
 
 export const uploadFile = (url) => {
-    return axios.post(`${server_url}/upload`, {url})
+    return axios.post(`${serverUrl}/upload`, {url})
 }
 
 export const getAllFiles = () => {
-    return axios.get(`${server_url}/file/all`)
+    return axios.get(`${serverUrl}/file/all`)
 }
 
 export const deleteFile = (fileId) => {
-    return axios.delete(`${server_url}/file/delete/${fileId}`)
+    return axios.delete(`${serverUrl}/file/delete/${fileId}`)
 }
 
 export const renameFile = (fileId, name) => {
-    return axios.patch(`${server_url}/file/rename/${fileId}`, {name})
+    return axios.patch(`${serverUrl}/file/rename/${fileId}`, {name})
 }
 
 export const downloadFile = fileId => {
-    return axios.get(`${server_url}/file/download/${fileId}`)
+    return axios.get(`${serverUrl}/file/download/${fileId}`)
 }
