@@ -3,11 +3,15 @@ import {ProgressBar} from './ProgressBar.utility'
 import {Label} from './Label/Label.utility'
 import {UrlInputUpload} from './UrlInputUpload/UrlInputUpload.utility'
 import {Spinner} from './Spinner/Spinner.utility'
+import {Logo} from './Logo/Logo.utility'
+import {Input} from './Input/Input.utility'
 
 export {
     Button,
     ProgressBar,
     Label,
     UrlInputUpload,
-    Spinner
+    Spinner,
+    Logo,
+    Input
 }

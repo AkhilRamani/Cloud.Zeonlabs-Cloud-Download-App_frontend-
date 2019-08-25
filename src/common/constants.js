@@ -5,7 +5,12 @@ const fileStatus = {
 
 const serverUrl = 'http://localhost:3000';
 
+const LOCAL_STORAGE_LABLES = {
+    TOKEN: 'TOKEN'
+}
+
 export {
     fileStatus,
-    serverUrl
+    serverUrl,
+    LOCAL_STORAGE_LABLES
 }

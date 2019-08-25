@@ -1,7 +1,12 @@
 import React from 'react'
+import Popup from 'reactjs-popup'
+import {withRouter} from 'react-router-dom'
 
 import {RoundIcon} from '../icons/round.icon'
 import './Header.modules.scss'
+import ProfileDDMenu from '../DropDownMenu/ProfileDDMenu/ProfileDDMenu.component'
+
+const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
 
 const Header = () => (
     <div className="header-container" >
@@ -9,9 +14,22 @@ const Header = () => (
         <div className='header-menu' >
             <RoundIcon/>
             <RoundIcon/>
-            <RoundIcon/>
+            
+            <Popup 
+                trigger={<img 
+                    src={imageUrl}
+                    className='profile-pic profile-pic-common'
+                    alt='Profile'
+                />}
+                position='bottom right'
+                closeOnDocumentClick
+                contentStyle={{padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', borderRadius: 5, width: 'auto' }}
+            >
+                <ProfileDDMenu />
+            </Popup>
+            
         </div>
     </div>
 )
 
-export default Header
+export default withRouter(Header)

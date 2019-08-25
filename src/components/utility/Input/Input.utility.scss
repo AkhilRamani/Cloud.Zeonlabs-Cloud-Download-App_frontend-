@@ -1,0 +1,13 @@
+.utl-input{
+    background-color: #00000011;
+    font-size: 16.5px;
+    font-weight: 500;
+    padding: 9px 9px;
+    opacity: 0.8;
+}
+.utl-input:focus,:hover {
+    opacity: 1;
+}
+::placeholder{
+    font-weight: 400
+}

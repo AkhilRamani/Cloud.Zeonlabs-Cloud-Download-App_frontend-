@@ -3,13 +3,14 @@ import ReduxWrapper from './redux/ReduxWrapper'
 import {Route} from 'react-router-dom'
 
 import MainApp from './pages/MainApp'
-import Login from './pages/Login/Login'
+import Auth from './pages/Auth/Auth'
 
 function App() {
   	return (
   		<ReduxWrapper>
             <Route path='/' exact component={MainApp} />
-            <Route path='/login' exact component={Login} />
+            <Route path='/auth' exact component={Auth} />
+            <Route path='/tandc' exact component={Auth} />
 		</ReduxWrapper>
   	);
 }
