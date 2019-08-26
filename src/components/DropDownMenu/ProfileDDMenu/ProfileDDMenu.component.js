@@ -1,9 +1,11 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import './ProfileDDMenu.styles.scss'
 import {clearToken} from '../../../common/common.utils'
 import {logoutUser} from '../../../apis/apis'
+import {logout_redux} from '../../../redux/actions/user.actions'
 
 const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
 
@@ -14,6 +16,7 @@ const ProfileDDMenu = (props) => {
             .then(res => {
                 clearToken()
                 //clear redux store
+                props.logout_redux()
                 props.history.push('/auth')
             })
             .catch(e => console.log(e))
@@ -35,4 +38,8 @@ const ProfileDDMenu = (props) => {
     )
 }
 
-export default withRouter(ProfileDDMenu)
+const mapDispatchToProps = dispatch => ({
+    logout_redux: () => dispatch(logout_redux())
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(ProfileDDMenu))
