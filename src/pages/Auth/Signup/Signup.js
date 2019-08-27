@@ -9,7 +9,7 @@ import {storeToken} from '../../../common/common.utils'
 
 class Signup extends React.Component{
     state = {
-        name: '', email: '', password: '', cpassword: '', loading: false
+        f_name: '', l_name: '', email: '', password: '', cpassword: '', loading: false
     }
 
     _handleInputChange = (event, property) => {
@@ -42,7 +42,11 @@ class Signup extends React.Component{
                 </div>
 
                 <div className='g-flex-ac' style={{flexDirection: 'column'}} >
-                    <Input type='text' placeholder='Full name' className='auth-input' onChange={e => this._handleInputChange(e, 'name')} />
+                    <div className='g-flex-ac' >
+                        <Input style={{width: 140}} type='text' placeholder='First name' className='auth-input' onChange={e => this._handleInputChange(e, 'f_name')} />
+                        <div style={{width: 30}} />
+                        <Input style={{width: 140}} type='text' placeholder='Last name' className='auth-input' onChange={e => this._handleInputChange(e, 'l_name')} />
+                    </div>
                     <Input type='text' placeholder='email' className='auth-input' onChange={e => this._handleInputChange(e, 'email')}/>
                     <Input type='password' placeholder='passowrd' className='auth-input' onChange={e => this._handleInputChange(e, 'password')}/>
                     <Input type='password' placeholder='Confirm password' className='auth-input' onChange={e => this._handleInputChange(e, 'cpassword')}/>

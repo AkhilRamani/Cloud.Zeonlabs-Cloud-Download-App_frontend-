@@ -5,6 +5,7 @@ import {UrlInputUpload} from './UrlInputUpload/UrlInputUpload.utility'
 import {Spinner} from './Spinner/Spinner.utility'
 import {Logo} from './Logo/Logo.utility'
 import {Input} from './Input/Input.utility'
+import {ProfilePic} from './ProfilePic/ProfilePic.utility'
 
 export {
     Button,
@@ -13,5 +14,6 @@ export {
     UrlInputUpload,
     Spinner,
     Logo,
-    Input
+    Input,
+    ProfilePic
 }

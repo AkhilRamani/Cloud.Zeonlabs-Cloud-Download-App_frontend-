@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {serverUrl} from '../common/constants'
 import {getToken} from '../common/common.utils'
+import {X_AUTH} from './config'
 
 export const uploadFile = (url) => {
     return axios.post(`${serverUrl}/upload`, {url})
@@ -33,4 +34,9 @@ export const loginUser = data => {
 export const logoutUser = async () => {
     const token = await getToken()
     return axios.delete(`${serverUrl}/logout`, {headers: { 'x-auth': token }})
+}
+
+export const getUserProfile = async () => {
+    const token = await getToken()
+    return axios.get(`${serverUrl}/me`, { headers: { [X_AUTH]: token } })
 }

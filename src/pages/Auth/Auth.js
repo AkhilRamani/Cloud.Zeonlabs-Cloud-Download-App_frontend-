@@ -30,7 +30,7 @@ const Auth = ({history}) => {
             : (
                 <div className='auth-main-container g-flex-ac'>
                     <div className='auth-box g-round-corner' >
-                        <div className='g-flex-ac' >
+                        <div className='g-flex-ac' style={{justifyContent: 'space-between'}} >
                             <Logo />
                             <button className='auth-toggle-btn' onClick={() => setAuthToggle(!authToggle)} >{authToggle ? 'Sign up': 'Sign in'}</button>
                         </div>

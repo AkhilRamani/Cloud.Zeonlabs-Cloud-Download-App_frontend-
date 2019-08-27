@@ -1,7 +1,7 @@
 import React from "react"
 
 import '../styles/global.styles.scss'
-import Header from '../components/header/Header'
+import Header from '../components/navigations/header/Header'
 import Sidebar from '../components/navigations/Sidebar/Sidebar'
 import ListContainer from '../components/navigations/ListContainer/ListContainer'
 import {socket} from '../apis/socket'

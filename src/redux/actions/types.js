@@ -4,3 +4,4 @@ export const CHANGE_FILE_STATUS = 'CHANGE_FILE_STATUS'
 export const RENAME_FILE = 'RENAME_FILE'
 
 export const LOGOUT = 'LOGOUT'
+export const STORE_USER = 'STORE_USER'
