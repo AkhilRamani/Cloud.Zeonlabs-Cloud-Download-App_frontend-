@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import './DriveInfoBox.styles.scss'
 import {addFile} from '../../redux/actions/file.action'
+import {increaseUsedSpace} from '../../redux/actions/user.actions'
 import {UrlInputUpload} from '../utility'
 import {uploadFile} from '../../apis/apis'
 
@@ -22,6 +23,7 @@ class AddFileBox extends React.Component{
             .then(res => {
                 const file = res.data
                 this.props.addFile({ _id: file._id, name: file.name, size: file.size, createdAt: file.createdAt, status: file.status})
+                this.props.increaseUsedSpace(file.size)
                 this.setState({urlText: ''})
             })
             .catch(e => {
@@ -80,6 +82,9 @@ class AddFileBox extends React.Component{
     }
 }
 
-const mapDispatchToProps = dispatch => ({addFile: file => dispatch(addFile(file))})
+const mapDispatchToProps = dispatch => ({
+    addFile: file => dispatch(addFile(file)),
+    increaseUsedSpace: fileSize => dispatch(increaseUsedSpace(fileSize))
+})
 
 export default connect(null, mapDispatchToProps)(AddFileBox)

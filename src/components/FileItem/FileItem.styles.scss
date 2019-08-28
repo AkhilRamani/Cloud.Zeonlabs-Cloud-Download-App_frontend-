@@ -30,6 +30,10 @@ $animationTransition: all 0.3s cubic-bezier(.25,.8,.25,1);
     font-size: 17px;
     font-weight: 700;
     margin: 16px 0 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 300px;
+    text-overflow: ellipsis;
     // font-family: 'Roboto', sans-serif;
 }
 .fi-inner-container{

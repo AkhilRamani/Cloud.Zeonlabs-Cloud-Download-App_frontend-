@@ -9,6 +9,7 @@ import './dropDownMenu.style.scss'
 import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon} from '../icons/icons'
 import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../apis/apis';
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
+import {decreaseUsedSpace} from '../../redux/actions/user.actions'
 import {serverUrl} from '../../common/constants'
 
 
@@ -28,7 +29,7 @@ const PopupBox = ({trigger, content, closeOutsideClick}) => (
     >{content}</Popup>
 )
 
-const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile}) => {
+const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile, decreaseUsedSpace}) => {
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(fileName)
 
@@ -39,6 +40,7 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
         deleteFileApi(fileId)
             .then(res => {
                 changeLoadingState()
+                decreaseUsedSpace(res.data.size)
                 deleteReduxFile(res.data._id)
             })
             .catch(e => {
@@ -130,7 +132,8 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
 
 const mapDispatchToProps = dispatch => ({
     deleteReduxFile: id => dispatch(deleteReduxFile(id)),
-    renameReduxFile: (id, name) => dispatch(renameReduxFile(id, name))
+    renameReduxFile: (id, name) => dispatch(renameReduxFile(id, name)),
+    decreaseUsedSpace: fileSize => dispatch(decreaseUsedSpace(fileSize))
 })
 
 export default connect(null, mapDispatchToProps)(DropDownMenu)

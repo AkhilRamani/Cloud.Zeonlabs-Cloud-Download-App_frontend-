@@ -8,7 +8,7 @@ import {logoutUser} from '../../../apis/apis'
 import {logout_redux} from '../../../redux/actions/user.actions'
 import {ProfilePic} from '../../utility'
 
-const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
+// const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
 
 const ProfileDDMenu = (props) => {
 

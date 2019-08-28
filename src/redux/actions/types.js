@@ -5,3 +5,6 @@ export const RENAME_FILE = 'RENAME_FILE'
 
 export const LOGOUT = 'LOGOUT'
 export const STORE_USER = 'STORE_USER'
+
+export const INCREASE_USED_SPACE = 'INCREASE_USED_SPACE'
+export const DECREASE_USED_SPACE = 'DECREASE_USED_SPACE'

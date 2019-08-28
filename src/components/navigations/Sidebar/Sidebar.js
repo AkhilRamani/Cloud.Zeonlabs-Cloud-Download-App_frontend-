@@ -1,15 +1,19 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import './Sidebar.modules.scss'
 import {getUserProfile} from '../../../apis/apis'
-import {ProgressBar} from '../../utility'
 import DriveInfo from '../../DriveInfo/DriveInfo'
+import {storeUser_redux} from '../../../redux/actions/user.actions'
 
 class Sidebar extends React.Component{
 
     componentDidMount(){
         getUserProfile()
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                this.props.storeUser_redux(res.data)
+            })
             .catch(e => console.log(e))
     }
 
@@ -17,7 +21,9 @@ class Sidebar extends React.Component{
         return(
             <div className='sidebar-container' >
                 <div className='sb-inner' >
-                    <ProgressBar progress={40} />
+                    <div className='sb-title-div' >
+                        <h3 className='g-roboto' >My drive</h3>
+                    </div>
                     <DriveInfo />
                 </div>
             </div>
@@ -25,4 +31,8 @@ class Sidebar extends React.Component{
     }
 } 
 
-export default Sidebar
+const mapDispatchToProps = dispatch => ({
+    storeUser_redux: user => dispatch(storeUser_redux(user))
+})
+
+export default connect(null, mapDispatchToProps)(Sidebar)

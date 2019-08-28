@@ -9,12 +9,12 @@ export const ProgressBar = ({progress}) => (
     <div style={{
         ...styleGlobal,
         // width: '100%',
-        backgroundColor: '#1463b8'
+        backgroundColor: '#eaf4fe'
     }}>
       <div style={{
             ...styleGlobal,
             width: `${progress}%`,
-            backgroundColor: '#ffffff'
+            backgroundColor: '#1879e3'
         }} />
     </div>
 )
