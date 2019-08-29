@@ -3,20 +3,24 @@ import {serverUrl} from '../common/constants'
 import {getToken} from '../common/common.utils'
 import {X_AUTH} from './config'
 
-export const uploadFile = (url) => {
-    return axios.post(`${serverUrl}/upload`, {url})
+export const uploadFile = async (url) => {
+    const token = await getToken()
+    return axios.post(`${serverUrl}/upload`, {url}, {headers: {[X_AUTH]: token}})
 }
 
-export const getAllFiles = () => {
-    return axios.get(`${serverUrl}/file/all`)
+export const getAllFiles = async () => {
+    const token = await getToken()
+    return axios.get(`${serverUrl}/file/all`, {headers: {[X_AUTH]: token}})
 }
 
-export const deleteFile = (fileId) => {
-    return axios.delete(`${serverUrl}/file/delete/${fileId}`)
+export const deleteFile = async (fileId) => {
+    const token = await getToken()
+    return axios.delete(`${serverUrl}/file/delete/${fileId}`, {headers: {[X_AUTH]: token}})
 }
 
-export const renameFile = (fileId, name) => {
-    return axios.patch(`${serverUrl}/file/rename/${fileId}`, {name})
+export const renameFile = async (fileId, name) => {
+    const token = await getToken()
+    return axios.patch(`${serverUrl}/file/rename/${fileId}`, {name}, {headers: {[X_AUTH]: token}})
 }
 
 export const downloadFile = fileId => {

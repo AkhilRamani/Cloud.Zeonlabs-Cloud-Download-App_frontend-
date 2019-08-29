@@ -22,7 +22,7 @@ class Signup extends React.Component{
 
     _handleSubmit = () => {
         this.changeLoadingState()
-        createUser(_.pick(this.state, 'name', 'email', 'password'))
+        createUser(_.pick(this.state, 'f_name', 'l_name', 'email', 'password'))
             .then(res => {
                 console.log(res.data)
                 storeToken(res.data.token)

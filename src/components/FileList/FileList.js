@@ -5,21 +5,11 @@ import FileItem from '../FileItem/FileItem'
 import {addFile, changeFileStatus} from '../../redux/actions/file.action'
 import {Spinner} from '../utility'
 import {getAllFiles} from '../../apis/apis'
-import {socket} from '../../apis/socket'
-import {socketEvents} from '../../apis/config'
 
 class FileList extends Component {
     state = {
-        loading: true
-    }
-
-    constructor(){
-        super()
-
-        socket.on(`${socketEvents.DONE}-${123}`, ({_id}) => {
-            console.log('file uploaded ', _id)
-            this.props.changeFileStatus(_id)
-        })
+        loading: true,
+        userId: null
     }
 
     componentDidMount(){

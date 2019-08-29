@@ -5,6 +5,7 @@ import './Sidebar.modules.scss'
 import {getUserProfile} from '../../../apis/apis'
 import DriveInfo from '../../DriveInfo/DriveInfo'
 import {storeUser_redux} from '../../../redux/actions/user.actions'
+import {socketFileStatusListener} from '../../../apis/socket/socket.listener'
 
 class Sidebar extends React.Component{
 
@@ -13,6 +14,7 @@ class Sidebar extends React.Component{
             .then(res => {
                 console.log(res.data)
                 this.props.storeUser_redux(res.data)
+                socketFileStatusListener(res.data._id)
             })
             .catch(e => console.log(e))
     }
