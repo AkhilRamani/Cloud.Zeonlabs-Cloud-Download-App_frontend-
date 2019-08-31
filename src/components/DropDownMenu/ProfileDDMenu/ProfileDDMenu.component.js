@@ -7,8 +7,7 @@ import {clearToken} from '../../../common/common.utils'
 import {logoutUser} from '../../../apis/apis'
 import {logout_redux} from '../../../redux/actions/user.actions'
 import {ProfilePic} from '../../utility'
-
-// const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
+import { formatAvatarChar } from '../../../Utils/utils';
 
 const ProfileDDMenu = (props) => {
 
@@ -26,7 +25,7 @@ const ProfileDDMenu = (props) => {
     return(
         <div className='ddm-main h-ddm-main' >
             <div className='g-flex-ac h-ddm-profile-div' >
-                <ProfilePic text='AK' size={85} />
+                <ProfilePic src={props.user.avatar} text={formatAvatarChar(props.user.f_name, props.user.l_name)} size={85} />
                 <div style={{paddingLeft: 20}} >
                     <h4 className='g-roboto' >Akhil Ramani</h4>
                     <p className='g-roboto h-ddm-p-email' >akhilramani@mail.com</p>
@@ -39,8 +38,9 @@ const ProfileDDMenu = (props) => {
     )
 }
 
+const mapStateToProps = state => state.user
 const mapDispatchToProps = dispatch => ({
     logout_redux: () => dispatch(logout_redux())
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(ProfileDDMenu))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProfileDDMenu))
