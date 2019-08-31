@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import './DriveInfo.styles.scss'
 import {formatBytes, formatPercentage} from '../../Utils/utils'
-import {ProgressBar} from '../utility'
+import {ProgressBar, Label} from '../utility'
 
 const RowSpace = <td style={{height: 8}} />
 
@@ -11,9 +11,12 @@ const DriveInfo = (props) => {
     const {storage} = props.user
     return props.user.storage ?
         (
-            <div>
+            <div className='dinfo-container' >
                 <div className='dinfo-progress-div' >
-                    <h4 className='g-roboto dinfo-progress-text' >{formatPercentage(storage.used, storage.space)}% used</h4>
+                    <div className='g-flex-ac' style={{paddingBottom: 8}} >
+                        <Label title={formatPercentage(storage.used, storage.space) + '%'} />
+                        <h4 className='g-roboto dinfo-progress-text' >&nbsp;Used</h4>
+                    </div>
                     <ProgressBar progress={formatPercentage(storage.used, storage.space)} />
                 </div>
                 <div className='dinfo-conatiner' >
@@ -39,7 +42,12 @@ const DriveInfo = (props) => {
             </div>
         )
         :
-        <h4>Loading...</h4>
+        // <h4>Loading...</h4>
+        <div className='sclton-sidebar'>
+            <div className='g-sklton-line' />
+            <div className='g-sklton-line'/>
+            <div className='g-sklton-line'/>
+        </div>
 }
 
 const mapStateToProps = state => state.user

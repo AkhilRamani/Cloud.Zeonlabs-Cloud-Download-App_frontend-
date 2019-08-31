@@ -7,13 +7,16 @@
     left: 0;
     box-shadow: -2px 0 6px #67676761;
 
+    .sb-title-div{
+        padding: 26px 35px 23px;
+        background-color: #FDD235;
+        h3{
+            opacity: 0.5;
+        }
+    }
+
     .sb-inner{
         padding: 30px 35px;
-
-        .sb-title-div{
-            // border-bottom: 1.3px solid rgba(0, 0, 0, 0.116);
-            padding-bottom: 7px
-        }
 
         h3{
             color: #000F6C

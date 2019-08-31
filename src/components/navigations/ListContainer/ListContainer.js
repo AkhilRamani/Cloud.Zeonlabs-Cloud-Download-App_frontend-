@@ -13,7 +13,7 @@ const ListContainer = () => {
             <div style={{marginBottom: -8}} >
                 <p style={{paddingLeft: 20, fontWeight: '600', color: '#0000003d'}} >All files</p>
             </div>
-            <div className='main-list-container g-flex-ac' >
+            <div className='main-list-container g-flex-ac'>
                 <FileList />
             </div>
         </div>

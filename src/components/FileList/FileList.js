@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
+import './FileList.styles.scss'
 import FileItem from '../FileItem/FileItem'
 import {addFile, changeFileStatus} from '../../redux/actions/file.action'
 import {Spinner} from '../utility'
@@ -21,7 +22,9 @@ class FileList extends Component {
 
     render(){
         return this.state.loading ? 
-            <Spinner style={{margin: 20}} /> 
+            <div className='g-flex-ac f-list-loader-div' >
+                <Spinner size={60} style={{margin: 20}} /> 
+            </div>
             : (
             this.props.files.map(file => (
                 <FileItem

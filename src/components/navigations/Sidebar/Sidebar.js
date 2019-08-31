@@ -6,6 +6,7 @@ import {getUserProfile} from '../../../apis/apis'
 import DriveInfo from '../../DriveInfo/DriveInfo'
 import {storeUser_redux} from '../../../redux/actions/user.actions'
 import {socketFileStatusListener} from '../../../apis/socket/socket.listener'
+import { CloudIcon, CloudCircleIcon, StorageIcon } from '../../icons/icons';
 
 class Sidebar extends React.Component{
 
@@ -22,10 +23,13 @@ class Sidebar extends React.Component{
     render(){
         return(
             <div className='sidebar-container' >
+                <div className='sb-title-div g-flex-ac' >
+                    {/* <CloudIcon style={{opacity: 0.5, marginRight: 10}} /> */}
+                    <StorageIcon style={{opacity: 0.5, marginRight: 10}} />
+                    {/* <CloudCircleIcon style={{opacity: 0.5, marginRight: 10}} /> */}
+                    <h3 className='g-roboto' >My drive</h3>
+                </div>
                 <div className='sb-inner' >
-                    <div className='sb-title-div' >
-                        <h3 className='g-roboto' >My drive</h3>
-                    </div>
                     <DriveInfo />
                 </div>
             </div>

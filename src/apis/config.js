@@ -1,4 +1,4 @@
-export default 'http://localhost:3000';
+export default 'http://192.168.0.6:3000';
 
 export const socketEvents = {
     DONE: 'DONE',

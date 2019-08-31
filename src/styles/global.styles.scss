@@ -43,3 +43,28 @@ body{
     border-radius: 50%;
     object-fit: cover;
 }
+
+//---loader skeleton
+.g-sklton-line {
+    // background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(
+      to right,
+      transparent 33%,
+      rgb(255, 255, 255) 50%,
+      transparent 66%
+    );
+    background-size:300% 100%;
+    animation: g-shine 1.4s infinite;
+
+    @keyframes g-shine {
+      0% {
+        background-position: right;    
+      }
+      /*100% {
+        background-position: left; it's the default value, no need to define it
+      }*/
+    }
+  }
+  .g-sklton-color{
+      background-color: rgba(0, 0, 0, 0.041)
+  }

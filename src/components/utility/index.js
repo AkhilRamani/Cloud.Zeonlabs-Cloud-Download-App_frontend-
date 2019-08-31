@@ -6,6 +6,7 @@ import {Spinner} from './Spinner/Spinner.utility'
 import {Logo} from './Logo/Logo.utility'
 import {Input} from './Input/Input.utility'
 import {ProfilePic} from './ProfilePic/ProfilePic.utility'
+import {LoadingBar} from './LoadingBar/LoadingBar.utility'
 
 export {
     Button,
@@ -15,5 +16,6 @@ export {
     Spinner,
     Logo,
     Input,
-    ProfilePic
+    ProfilePic,
+    LoadingBar
 }
