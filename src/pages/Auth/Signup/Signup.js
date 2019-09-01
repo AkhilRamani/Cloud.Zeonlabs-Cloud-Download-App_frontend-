@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import _ from 'lodash'
 
-import {Input, Button} from '../../../components/utility'
+import {Input, Button, notify} from '../../../components/utility'
 import {PRIMARY_COLOR} from '../../../styles/color.theme'
 import {createUser} from '../../../apis/apis'
 import {storeToken} from '../../../common/common.utils'
@@ -15,7 +15,8 @@ class Signup extends React.Component{
 
     _handleInputChange = (event, property) => {
         this.setState({
-            [property]: event.target.value
+            [property]: event.target.value,
+            [`${property}Err`]: false
         })
     }
     
@@ -25,12 +26,23 @@ class Signup extends React.Component{
     handleSignUP = () => {
         createUser(_.pick(this.state, 'f_name', 'l_name', 'email', 'password'))
             .then(res => {
-                console.log(res.data)
                 storeToken(res.data.token)
                 this.changeLoadingState()
                 this.props.success()
             })
-            .catch(e => console.log(e))
+            .catch(({response}) =>{
+                switch(response.status){
+                    case 409:
+                        this.setInputErr('email')
+                        notify('User already registred!')
+                        break
+
+                    default:
+                        console.log(response)
+                        notify('Something went wrong!')
+                }
+                this.changeLoadingState()
+            })
     }
 
     _handleSubmit = () => {
@@ -49,6 +61,8 @@ class Signup extends React.Component{
             }
             else{
                 console.log('password does not match')
+                this.setInputErr('password')
+                this.setInputErr('cpassword')
             }
         }
     }

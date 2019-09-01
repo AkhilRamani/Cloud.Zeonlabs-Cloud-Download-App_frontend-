@@ -1,16 +1,14 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-// import toast from 'toasted-notes'
-// import ReactNotification from 'react-notifications-component'
 import Popup from 'reactjs-popup'
-import {Button} from '../utility/Button/button.utility'
 
 import './dropDownMenu.style.scss'
+import {Button, notify} from '../utility'
 import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon} from '../icons/icons'
 import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../apis/apis';
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
 import {decreaseUsedSpace} from '../../redux/actions/user.actions'
-import {serverUrl} from '../../common/constants'
+import {serverUrl, notifyMsgs} from '../../common/constants'
 
 
 const DdMenuItem = ({name, onClick, Icon}) => (
@@ -42,12 +40,13 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
                 changeLoadingState()
                 decreaseUsedSpace(res.data.size)
                 deleteReduxFile(res.data._id)
+                notify(notifyMsgs.DELETE_MSG)
             })
             .catch(e => {
                 changeLoadingState()
+                notify(notifyMsgs.COMMON_ERR)
                 console.log(e)
             })
-            // .finally(() => setLoading(false))
     }
 
     const renameFile = () => {
@@ -56,11 +55,14 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
             .then(res => {
                 changeLoadingState()
                 renameReduxFile(fileId, res.data.name)
+                notify(notifyMsgs.RENAME_MSG)
                 close()
             })
             .catch(e => {
                 changeLoadingState()
-                console.log(e)})
+                console.log(e)
+                notify(notifyMsgs.COMMON_ERR)
+            })
     }
 
     const downloadFile = () => {

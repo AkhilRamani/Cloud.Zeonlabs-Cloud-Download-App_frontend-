@@ -27,8 +27,8 @@ const ProfileDDMenu = (props) => {
             <div className='g-flex-ac h-ddm-profile-div' >
                 <ProfilePic src={props.user.avatar} text={formatAvatarChar(props.user.f_name, props.user.l_name)} size={85} />
                 <div style={{paddingLeft: 20}} >
-                    <h4 className='g-roboto' >Akhil Ramani</h4>
-                    <p className='g-roboto h-ddm-p-email' >akhilramani@mail.com</p>
+                    <h4 className='g-roboto' >{props.user.f_name +' '+ props.user.l_name}</h4>
+                    <p className='g-roboto h-ddm-p-email' >{props.user.email}</p>
                 </div>
             </div>
             <div className="ddm-item g-flex-ac" onClick={_handleLogout} >

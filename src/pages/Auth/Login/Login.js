@@ -1,31 +1,60 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import _ from 'lodash'
 
 import './Login.styles.scss'
-import { Button, Input } from '../../../components/utility';
+import { Button, Input, notify } from '../../../components/utility';
 import {loginUser} from '../../../apis/apis'
 import {storeToken} from '../../../common/common.utils'
+
 
 class Login extends  React.Component{
 
     state = {
-        email: '', passowrd: '', loading: false
+        email: '', password: '', loading: false,
+        emailErr: false, passwordErr: false
     }
     
-    _handleInputChange = (event, property) => this.setState({ [property]: event.target.value })
+    _handleInputChange = (event, property) => this.setState({ [property]: event.target.value, [`${property}Err`]: false })
     changeLoadingState = () => this.setState(state => ({loading: !state.loading}))
+    setInputErr = (property) => this.setState({[`${property}Err`]: true})
+
+    handleLogin = (email, password) => {
+        loginUser({email, password})
+                .then(res => {
+                    storeToken(res.data.token)
+                    this.changeLoadingState()
+                    this.props.success()
+                })
+                .catch(({response}) => {  
+                    switch(response.status){
+                        case 404:
+                            notify('No such user found!')
+                            this.setInputErr('email')
+                            break
+
+                        case 401:
+                            notify('Incorrect Password')
+                            this.setInputErr('password')
+                            break
+
+                        default:
+                            console.log(response)
+                            notify('Something went wrong!')
+                    }
+                    this.changeLoadingState()
+                })
+    }
 
     _handleSubmit = () => {
-        this.changeLoadingState()
-        loginUser(_.pick(this.state, ['email', 'password']))
-            .then(res => {
-                console.log(res.data)
-                storeToken(res.data.token)
-                this.changeLoadingState()
-                this.props.success()
-            })
-            .catch(e => console.log(e))
+        const {email, password} = this.state
+
+        !email.trim() && this.setInputErr('email')
+        !password.trim() && this.setInputErr('password')
+
+        if(email.trim() && password.trim()){
+            this.changeLoadingState()
+            this.handleLogin(email, password)
+        }
     }
 
     render(){
@@ -36,8 +65,8 @@ class Login extends  React.Component{
                     <p className='g-roboto login-sub-text' >Sign in to continue to the app</p>
                 </div>
                 <div className='g-flex-ac' style={{flexDirection: 'column'}} >
-                    <Input type='text' placeholder='email' className='auth-input' onChange={event => this._handleInputChange(event, 'email')} />
-                    <Input type='password' placeholder='passowrd' className='auth-input' onChange={event => this._handleInputChange(event, 'password')} />
+                    <Input err={this.state.emailErr} type='text' placeholder='email' className='auth-input' onChange={event => this._handleInputChange(event, 'email')} />
+                    <Input err={this.state.passwordErr} type='password' placeholder='password' className='auth-input' onChange={event => this._handleInputChange(event, 'password')} />
 
                     <div className='g-flex-ac' style={{justifyContent: 'space-between', alignSelf: 'stretch'}} >
                         <div className='g-flex-ac' >
