@@ -5,6 +5,7 @@ import './Login.styles.scss'
 import { Button, Input, notify } from '../../../components/utility';
 import {loginUser} from '../../../apis/apis'
 import {storeToken} from '../../../common/common.utils'
+import {notifyMsgs} from '../../../common/constants'
 
 
 class Login extends  React.Component{
@@ -24,6 +25,7 @@ class Login extends  React.Component{
                     storeToken(res.data.token)
                     this.changeLoadingState()
                     this.props.success()
+                    notify(notifyMsgs.LOGIN_MSG)
                 })
                 .catch(({response}) => {  
                     switch(response.status){

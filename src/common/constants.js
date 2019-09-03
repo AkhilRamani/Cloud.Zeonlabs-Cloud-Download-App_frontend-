@@ -10,6 +10,7 @@ const LOCAL_STORAGE_LABLES = {
 }
 
 const notifyMsgs = {
+    LOGIN_MSG: 'Welcome back user',
     DELETE_MSG: 'File deleted successfully',
     RENAME_MSG: 'File renamed successfully',
     DOWNLOADED_MSG: 'File downloaded successfully',

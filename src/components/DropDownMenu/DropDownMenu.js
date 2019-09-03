@@ -45,13 +45,13 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
             .catch(e => {
                 changeLoadingState()
                 notify(notifyMsgs.COMMON_ERR)
-                console.log(e)
             })
     }
 
     const renameFile = () => {
+        if(name === fileName) return null
         changeLoadingState()
-        renameFileApi(fileId, name)
+        renameFileApi(fileId, name.trim())
             .then(res => {
                 changeLoadingState()
                 renameReduxFile(fileId, res.data.name)
@@ -60,7 +60,6 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
             })
             .catch(e => {
                 changeLoadingState()
-                console.log(e)
                 notify(notifyMsgs.COMMON_ERR)
             })
     }
