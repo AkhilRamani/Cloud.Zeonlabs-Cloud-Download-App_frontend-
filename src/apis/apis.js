@@ -31,6 +31,10 @@ export const createUser = data => {
     return axios.post(`${serverUrl}/signup`, data)
 }
 
+export const activateUser = uuid => {
+    return axios.post(`${serverUrl}/activate/me`, {uuid})
+}
+
 export const loginUser = data => {
     return axios.post(`${serverUrl}/login`, data)
 }

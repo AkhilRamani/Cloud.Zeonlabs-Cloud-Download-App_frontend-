@@ -14,7 +14,9 @@ const notifyMsgs = {
     DELETE_MSG: 'File deleted successfully',
     RENAME_MSG: 'File renamed successfully',
     DOWNLOADED_MSG: 'File downloaded successfully',
-    COMMON_ERR: 'Something went wrong!'
+    COMMON_ERR: 'Something went wrong!',
+    INVALID_ACTI_URL: 'Invalid activation URL',
+    ACTIVATED_MSG: 'Your account is now activated'
 }
 
 export {
