@@ -16,7 +16,10 @@ const notifyMsgs = {
     DOWNLOADED_MSG: 'File downloaded successfully',
     COMMON_ERR: 'Something went wrong!',
     INVALID_ACTI_URL: 'Invalid activation URL',
-    ACTIVATED_MSG: 'Your account is now activated'
+    ACTIVATED_MSG: 'Your account is now activated',
+    WRONG_PASS: 'Incorrect Password',
+    NO_USER_FOUND: 'No such user found!',
+    UNVERIFIED_EMAIL: 'Your account is not verified yet'
 }
 
 export {

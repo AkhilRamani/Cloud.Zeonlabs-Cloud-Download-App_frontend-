@@ -30,18 +30,22 @@ class Login extends  React.Component{
                 .catch(({response}) => {  
                     switch(response.status){
                         case 404:
-                            notify('No such user found!')
+                            notify(notifyMsgs.NO_USER_FOUND)
                             this.setInputErr('email')
                             break
 
                         case 401:
-                            notify('Incorrect Password')
+                            notify(notifyMsgs.WRONG_PASS)
                             this.setInputErr('password')
+                            break
+
+                        case 403:
+                            notify(notifyMsgs.UNVERIFIED_EMAIL)
                             break
 
                         default:
                             console.log(response)
-                            notify('Something went wrong!')
+                            notify(notifyMsgs.COMMON_ERR)
                     }
                     this.changeLoadingState()
                 })
