@@ -68,3 +68,33 @@ body{
   .g-sklton-color{
       background-color: rgba(0, 0, 0, 0.041)
   }
+
+
+
+.g-blu-screen-fill{
+    width: 100%;
+    height: 100vh;
+
+    input{
+        width: calc(100% - 18px)
+    }
+    .g-sml-white-box{
+        margin: auto auto;
+        background-color: white;
+        padding: 40px;
+        // max-width: 361px;
+        max-width: 345px;
+    }
+    h3{
+        font-size: 22px;
+        padding-bottom: 8px
+    }
+    .g-bsf-sub-text{
+        color: rgb(194, 194, 194);
+        font-size: 15px;
+        line-height: 19px
+    }
+    .link{
+        color: #1a87fe
+    }
+}

@@ -48,3 +48,7 @@ export const getUserProfile = async () => {
     const token = await getToken()
     return axios.get(`${serverUrl}/me`, { headers: { [X_AUTH]: token } })
 }
+
+export const forgotPasswordReq = (email) => {
+    return axios.post(`${serverUrl}/forgot/pass`, {email})
+}

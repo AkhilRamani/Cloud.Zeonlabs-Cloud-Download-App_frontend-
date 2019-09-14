@@ -79,7 +79,7 @@ class Login extends  React.Component{
                             <Input type='checkbox' />
                             <p className='g-roboto login-sub-text'>Remember me</p>
                         </div>
-                        <Link className='g-roboto login-f-pass' to='/' >Forgot password</Link>
+                        <Link className='g-roboto login-f-pass' to='/req=reset-pass' >Forgot password</Link>
                     </div>
                 </div>
                 <div className='login-btn-div' >

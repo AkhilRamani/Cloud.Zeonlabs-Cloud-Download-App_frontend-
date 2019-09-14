@@ -12,7 +12,7 @@ class Signup extends React.Component{
     state = {
         f_name: '', l_name: '', email: '', password: '', cpassword: '', loading: false,
         f_nameErr: false, l_nameErr: false , emailErr: false, passowrdErr: false, cpasswordErr: false,
-        verifyScreen: false
+        verifyScreen: true
     }
 
     _handleInputChange = (event, property) => {

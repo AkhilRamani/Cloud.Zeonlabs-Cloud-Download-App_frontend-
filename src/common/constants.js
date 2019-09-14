@@ -19,7 +19,9 @@ const notifyMsgs = {
     ACTIVATED_MSG: 'Your account is now activated',
     WRONG_PASS: 'Incorrect Password',
     NO_USER_FOUND: 'No such user found!',
-    UNVERIFIED_EMAIL: 'Your account is not verified yet'
+    UNVERIFIED_EMAIL: 'Your account is not verified yet',
+    FORGOT_PASS_REQ_SENT: 'Password reset email sent',
+    EMAIL_NOT_FOUND: 'Email address not found'
 }
 
 export {
