@@ -52,3 +52,7 @@ export const getUserProfile = async () => {
 export const forgotPasswordReq = (email) => {
     return axios.post(`${serverUrl}/forgot/pass`, {email})
 }
+
+export const resetPassword = (uuid, password) => {
+    return axios.patch(`${serverUrl}/reset/pass`, {uuid, password})
+}

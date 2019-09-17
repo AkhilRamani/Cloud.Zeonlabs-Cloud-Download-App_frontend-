@@ -21,7 +21,9 @@ const notifyMsgs = {
     NO_USER_FOUND: 'No such user found!',
     UNVERIFIED_EMAIL: 'Your account is not verified yet',
     FORGOT_PASS_REQ_SENT: 'Password reset email sent',
-    EMAIL_NOT_FOUND: 'Email address not found'
+    EMAIL_NOT_FOUND: 'Email address not found',
+    INVALID_PASS_RESET_URL: 'Invalid password reset url',
+    PASS_RESET_SUCCESS: 'Password changed successfully'
 }
 
 export {

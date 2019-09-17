@@ -83,7 +83,7 @@ class Login extends  React.Component{
                     </div>
                 </div>
                 <div className='login-btn-div' >
-                    <Button name='Login' onClick={this._handleSubmit} style={{width: '100%'}} disabled={this.state.loading} loading={this.state.loading} />
+                    <Button name='Login' onClick={this._handleSubmit} style={{width: '100%'}} loading={this.state.loading} />
                 </div>
             </div>
         

@@ -10,4 +10,5 @@ export const Button = ({name, color, style, loading, ...rest}) => <button
         ...style
     }}
     {...rest}
+    disabled={loading}
 >{loading ? <Spinner style={{paddingTop: 3.5}} size={23} /> : name}</button>

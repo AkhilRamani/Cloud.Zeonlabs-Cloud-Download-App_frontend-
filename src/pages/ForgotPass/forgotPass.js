@@ -4,7 +4,7 @@ import { Logo, Input, Button, notify } from '../../components/utility'
 import { forgotPasswordReq } from '../../apis/apis'
 import { notifyMsgs } from '../../common/constants'
 
-const ForgotPass = props => {
+const ForgotPass = () => {
     const [reqSentScreen, setReqSentScreen] = useState(false)
     const [email, setEmail] = useState('')
     const [emailErr, setEmailErr] = useState(false)
@@ -25,7 +25,7 @@ const ForgotPass = props => {
                 notify(notifyMsgs.FORGOT_PASS_REQ_SENT)
             })
             .catch(e => {
-                if(e.response.status == 404){
+                if(e.response.status === 404){
                     setEmailErr(true)
                     notify(notifyMsgs.EMAIL_NOT_FOUND)
                 }
