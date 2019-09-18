@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import Popup from 'reactjs-popup'
+import CopyToClipBoard from 'react-copy-to-clipboard'
 
 import './dropDownMenu.style.scss'
-import {Button, notify} from '../utility'
-import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon} from '../icons/icons'
+import {Button, notify, Input} from '../utility'
+import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon, LinkIcon, InputIcon} from '../icons/icons'
 import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../apis/apis';
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
 import {decreaseUsedSpace} from '../../redux/actions/user.actions'
@@ -27,9 +28,12 @@ const PopupBox = ({trigger, content, closeOutsideClick}) => (
     >{content}</Popup>
 )
 
+const popupSideMenuStyle = {padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', borderRadius: 5, width: 'auto' }
+
 const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile, decreaseUsedSpace}) => {
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(fileName)
+    const [shareUrl] = useState(`https://cloud.zeonlabs.co/${fileId}`)
 
     const changeLoadingState = () => setLoading(!loading)
 
@@ -78,37 +82,58 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
 
 
             <Popup 
-                trigger={
-                    <div className="ddm-item g-flex-ac" >
-                        <RenameIcon />
-                        <p className='ddm-text g-roboto' >Rename</p>
-                    </div>} 
+                trigger={<div className="ddm-item g-flex-ac" >
+                    <RenameIcon />
+                    <p className='ddm-text g-roboto' >Rename</p>
+                </div>}
+
                 position='left top'
                 closeOnDocumentClick
-                contentStyle={{padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', borderRadius: 5, width: 'auto' }}
+                contentStyle={popupSideMenuStyle}
             >
-                    {close => (
-                        <div className='ddm-main ddm-rename-main g-flex-ac' >
-                            <input style={{width: 300}} className='g-input' type='text' placeholder='Enter new file name' onChange={e => setName(e.target.value)} value={name} />
-                            <div className='ddm-rename-sub g-flex-ac' >
-                                <Button style={{minWidth: 75, }} color='#dedede' name='Cancel' onClick={() => close()} disabled={loading} />
-                                <Button style={{minWidth: 75, marginLeft: 13}} name='Rename' onClick={renameFile} loading={loading} />
-                            </div>
+                {close => (
+                    <div className='ddm-main ddm-psm-main g-flex-ac' >
+                        <div className='g-flex-ac' >
+                            <InputIcon className='ddm-psm-input-icon' />
+                            <Input style={{width: 270,  borderRadius: '0 5px 5px 0'}} type='text' placeholder='Enter new file name' onChange={e => setName(e.target.value)} value={name} />
                         </div>
-                    )}
+                        <div className='ddm-psm-sub g-flex-ac' >
+                            <Button style={{minWidth: 75, }} color='#dedede' name='Cancel' onClick={() => close()} disabled={loading} />
+                            <Button style={{minWidth: 75, marginLeft: 13}} name='Rename' onClick={renameFile} loading={loading} />
+                        </div>
+                    </div>
+                )}
             </Popup>
 
+            <Popup
+                trigger={<div className="ddm-item g-flex-ac" >
+                    <ShareIcon />
+                    <p className='ddm-text g-roboto' >Share</p>
+                </div>}
 
-            <div className="ddm-item g-flex-ac" onClick={() => close()} >
-                <ShareIcon />
-                <p className='ddm-text g-roboto' >Share</p>
-            </div>
+                position='left top'
+                closeOnDocumentClick
+                contentStyle={popupSideMenuStyle}
+            >
+                {<div className='ddm-main ddm-psm-main g-flex-ac'>
+                    <div className='g-flex-ac' >
+                        <LinkIcon className='ddm-psm-input-icon' />
+                        <Input style={{width: 270, borderRadius: '0 5px 5px 0'}} value={shareUrl} readOnly />
+                    </div>
+                    <div className='g-flex-ac ddm-psm-sub' >
+                        <CopyToClipBoard
+                            text={shareUrl}
+                            onCopy={() => notify('Url copied!')}
+                        ><Button name='Copy'/></CopyToClipBoard>
+                    </div>
+                </div>}
+            </Popup>
 
             <PopupBox 
                 trigger={<DdMenuItem Icon={<DeleteIcon />} name='Delete' onClick={() => close()} />}
                 content={
                     <>
-                        <div style={{width: "100%", height: 10, backgroundColor:'#ff4343', borderRadius: '5px 5px 0 0'}} />
+                        {/* <div style={{width: "100%", height: 10, backgroundColor:'#ff4343', borderRadius: '5px 5px 0 0'}} /> */}
 
                         <div className='popc-main'>
                             <div className='g-flex-ac popc-sub-div' >
@@ -120,7 +145,7 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
                             </div>
                             <div className='g-flex-ac popc-btn-div' >
                                 <Button color='#dedede' name='Cancel' onClick={() => close()} disabled={loading} />
-                                <Button style={{marginLeft: 15}} color='#ff4343' name='Delete' onClick={deleteFile} loading={loading} />
+                                <Button style={{marginLeft: 20}} color='#ff4343' name='Delete' onClick={deleteFile} loading={loading} />
                             </div>
                         </div>
                     </>
