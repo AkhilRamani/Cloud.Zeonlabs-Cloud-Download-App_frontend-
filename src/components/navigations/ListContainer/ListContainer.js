@@ -6,7 +6,7 @@ import AddFileBox from '../../AddFileBox/AddFileBox'
 
 const ListContainer = () => {
     return (
-        <div style={{marginTop: 70}} >
+        <div >
             <div style={{padding:20}} >
                 <AddFileBox />
             </div>

@@ -1,0 +1,32 @@
+.epn-conatiner{
+    padding: 12px;
+
+    .epn-ib-title{
+        opacity: 0.4;
+        margin-bottom: 10px
+    }
+    .epn-margin-b{
+        margin-bottom: 15px;
+    }
+
+    .epn-info-box{
+        background-color: white;
+        padding: 30px;
+        
+        .epn-pi-box{display: flex;
+            .epn-pi-l-box{
+                width: 50%
+            }
+            .epn-pi-r-box{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                align-items: flex-end
+            }
+
+            input{
+                width: calc(100% - 18px)
+            }
+        }
+    }
+}

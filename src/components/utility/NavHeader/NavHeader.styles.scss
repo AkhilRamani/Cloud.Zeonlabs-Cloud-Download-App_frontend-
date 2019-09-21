@@ -1,0 +1,21 @@
+.utl-nh-main{
+    .nh-back-btn{
+        border-radius: 50%;
+        opacity: 0.8;
+        padding: 7px;
+        transition: 0.2s
+    }
+    .nh-back-btn:hover{
+        background-color: rgba(0, 0, 0, 0.062);
+        cursor: pointer;
+        opacity: 1;
+    }
+    .nh-back-btn:active{
+        background-color: rgba(0, 0, 0, 0.151);
+    }
+
+    .nh-title{
+        opacity: 0.8;
+        margin-left: 10px
+    }
+}

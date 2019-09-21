@@ -4,7 +4,7 @@ import './button.utility.scss'
 import {Spinner} from '../'
 
 export const Button = ({name, color, style, loading, ...rest}) => <button
-    className='btn-utl'
+    className={'btn-utl'}
     style={{
         backgroundColor: color || '#FDD235',
         ...style

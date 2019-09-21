@@ -32,9 +32,9 @@ const ProfileDDMenu = (props) => {
                     <p className='g-roboto h-ddm-p-email' >{props.user.email}</p>
                 </div>
             </div>
-            {/* <div className="ddm-item g-flex-ac" >
-                <p className='ddm-text g-roboto' style={{paddingLeft: 10}} >About</p>
-            </div> */}
+            <div className="ddm-item g-flex-ac" onClick={() => props.history.push('/edit/profile')} >
+                <p className='ddm-text g-roboto' style={{paddingLeft: 10}} >Edit profile</p>
+            </div>
             <div className="ddm-item g-flex-ac" onClick={_handleLogout} >
                 <LogoutIcon />
                 <p className='ddm-text g-roboto'>Logout</p>

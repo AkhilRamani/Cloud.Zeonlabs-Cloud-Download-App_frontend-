@@ -8,6 +8,7 @@ import {Input} from './Input/Input.utility'
 import {ProfilePic} from './ProfilePic/ProfilePic.utility'
 import {LoadingBar} from './LoadingBar/LoadingBar.utility'
 import {notify} from './Notification/Notification.utility'
+import {NavHeader} from './NavHeader/NavHeader.utility'
 
 export {
     Button,
@@ -19,5 +20,6 @@ export {
     Input,
     ProfilePic,
     LoadingBar,
-    notify
+    notify,
+    NavHeader
 }

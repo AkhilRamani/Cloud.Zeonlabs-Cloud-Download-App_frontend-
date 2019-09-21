@@ -26,9 +26,16 @@ const notifyMsgs = {
     PASS_RESET_SUCCESS: 'Password changed successfully'
 }
 
+const routes = {
+    APP: '/',
+    EDIT_PROFILE: '/edit/profile',
+    AUTH: '/auth'
+}
+
 export {
     fileStatus,
     serverUrl,
     LOCAL_STORAGE_LABLES,
-    notifyMsgs
+    notifyMsgs,
+    routes
 }
