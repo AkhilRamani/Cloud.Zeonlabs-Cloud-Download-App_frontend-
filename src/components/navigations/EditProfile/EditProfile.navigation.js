@@ -14,13 +14,16 @@ const EditProfileNavigation = props => (
             onBackClick={() => props.history.push(routes.APP) }
             style={{marginBottom: 20}}
         />
-        <div className='epn-conatiner' >
-            <h4 className='g-roboto epn-ib-title' >Personal info</h4>
-            <PersonalInfo />
-        </div>
-        <div className='epn-conatiner' >
-            <h4 className='g-roboto epn-ib-title' >Change password</h4>
-            <ChangePassword />
+        <div className='epn-conatiner g-flex' >
+            <div className='epn-sub-catagory' >
+                <h4 className='g-roboto epn-ib-title' >Personal info</h4>
+                <PersonalInfo />
+            </div>
+            <div style={{width: 30}} />
+            <div className='epn-sub-catagory' >
+                <h4 className='g-roboto epn-ib-title' >Change password</h4>
+                <ChangePassword />
+            </div>
         </div>
     </div>
 )

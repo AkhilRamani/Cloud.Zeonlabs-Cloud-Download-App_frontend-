@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProfilePic.styles.scss'
 
-export const ProfilePic = ({src, text, size, className, ...rest}) => (
+export const ProfilePic = ({src, text, size, textSize, className, ...rest}) => (
     (src ?
         <img 
             src={src}
@@ -13,7 +13,7 @@ export const ProfilePic = ({src, text, size, className, ...rest}) => (
     :
         <button
             className={`utl-profile-pic-btn ${className}`}
-            style={{width: size || 45, height: size || 45}}
+            style={{width: size || 45, height: size || 45, fontSize: textSize || '130%'}}
             {...rest}
         >{text}</button>)
 )

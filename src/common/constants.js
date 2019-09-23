@@ -3,7 +3,7 @@ const fileStatus = {
     DONE: 'done'
 }
 
-const serverUrl = 'http://localhost:3000';
+const serverUrl = 'http://localhost:3001';
 
 const LOCAL_STORAGE_LABLES = {
     TOKEN: 'TOKEN'

@@ -8,7 +8,8 @@ import {logoutUser} from '../../../apis/apis'
 import {logout_redux} from '../../../redux/actions/user.actions'
 import {ProfilePic} from '../../utility'
 import { formatAvatarChar } from '../../../Utils/utils';
-import {LogoutIcon} from '../../icons/icons'
+import {LogoutIcon, EditIcon} from '../../icons/icons'
+import { routes } from '../../../common/constants'
 
 const ProfileDDMenu = (props) => {
 
@@ -23,6 +24,8 @@ const ProfileDDMenu = (props) => {
             .catch(e => console.log(e))
     }
 
+    const _handleEditProfile = () => props.history.push(routes.EDIT_PROFILE)
+
     return(
         <div className='ddm-main h-ddm-main' >
             <div className='g-flex-ac h-ddm-profile-div' >
@@ -32,8 +35,9 @@ const ProfileDDMenu = (props) => {
                     <p className='g-roboto h-ddm-p-email' >{props.user.email}</p>
                 </div>
             </div>
-            <div className="ddm-item g-flex-ac" onClick={() => props.history.push('/edit/profile')} >
-                <p className='ddm-text g-roboto' style={{paddingLeft: 10}} >Edit profile</p>
+            <div className="ddm-item g-flex-ac" onClick={_handleEditProfile} >
+                <EditIcon />
+                <p className='ddm-text g-roboto'>Edit profile</p>
             </div>
             <div className="ddm-item g-flex-ac" onClick={_handleLogout} >
                 <LogoutIcon />
