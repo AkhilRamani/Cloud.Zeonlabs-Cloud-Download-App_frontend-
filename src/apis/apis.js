@@ -56,3 +56,11 @@ export const forgotPasswordReq = (email) => {
 export const resetPassword = (uuid, password) => {
     return axios.patch(`${serverUrl}/reset/pass`, {uuid, password})
 }
+
+export const updateProfile = (fileData) => {
+    const token = getToken()
+    return axios.post(`${serverUrl}/update/me`, fileData, {
+        headers: {[X_AUTH]: token,
+        'content-type': 'multipart/form-data'
+    }})
+}

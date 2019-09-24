@@ -44,11 +44,11 @@ const DriveInfo = (props) => {
         :
         // <h4>Loading...</h4>
         <div className='sclton-sidebar'>
-            <div className='g-sklton-line' style={{height: 20, width: 80}} />
-            <div className='g-sklton-line' style={{height: 20}} />
-            <div className='g-sklton-line' />
-            <div className='g-sklton-line'/>
-            <div className='g-sklton-line'/>
+            <div className='g-sklton-line g-skltn-bg-color g-round-corner' style={{height: 20, width: 80}} />
+            <div className='g-sklton-line g-skltn-bg-color g-round-corner' style={{height: 20}} />
+            <div className='g-sklton-line g-skltn-bg-color g-round-corner' />
+            <div className='g-sklton-line g-skltn-bg-color g-round-corner'/>
+            <div className='g-sklton-line g-skltn-bg-color g-round-corner'/>
         </div>
 }
 
