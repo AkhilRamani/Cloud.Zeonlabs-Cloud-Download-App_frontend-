@@ -5,6 +5,7 @@ import { Input, Button, ProfilePic } from '../../../utility'
 import {EditIcon} from '../../../icons/icons'
 import { formatAvatarChar } from '../../../../Utils/utils'
 import { updateProfile } from '../../../../apis/apis'
+import { updateUser } from '../../../../redux/actions/user.actions'
 
 class PersonalInfo extends Component{
     state={
@@ -32,13 +33,14 @@ class PersonalInfo extends Component{
             l_name: state.l_name || (!state.l_nameEdited ? this.props.user.l_name : '')
         }), () => {
             const {f_name, l_name, avatarFile} = this.state
-            if((f_name !== this.props.user.f_name || l_name !== this.props.user.l_name) && f_name.trim() && l_name.trim()){
+            if((f_name !== this.props.user.f_name || l_name !== this.props.user.l_name || avatarFile) && f_name.trim() && l_name.trim()){
                 if(f_name !== this.props.user.f_name) data.append('f_name', f_name)
                 if(l_name !== this.props.user.l_name) data.append('l_name', l_name)
                 if(avatarFile) data.append('file', avatarFile)
                 this._handleUpdateProfileRequest(data)
             }
             else{
+                console.log('errr')
                 !f_name.trim() && this.setState({f_nameErr: true})
                 !l_name.trim() && this.setState({l_nameErr: true})
             }
@@ -47,7 +49,10 @@ class PersonalInfo extends Component{
 
     _handleUpdateProfileRequest = data => {
         updateProfile(data)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                this.props.updateUser(res.data)
+            })
             .catch(e => console.log(e))
     }
 
@@ -91,5 +96,8 @@ class PersonalInfo extends Component{
 }
 
 const mapStateToProps = state => state.user
+const mapDispatchToProps = dispatch => ({
+    updateUser: pInfo => dispatch(updateUser(pInfo))
+})
 
-export default connect(mapStateToProps)(PersonalInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo)

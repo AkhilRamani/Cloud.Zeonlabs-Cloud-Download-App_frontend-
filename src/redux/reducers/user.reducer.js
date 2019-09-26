@@ -1,4 +1,4 @@
-import {STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE} from '../actions/types'
+import {STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER} from '../actions/types'
 
 const initialState = {
     user: {}
@@ -32,6 +32,16 @@ export const userReducer = (state = initialState, action) => {
                         ...state.user.storage,
                         used: state.user.storage.used - action.payload
                     }
+                }
+            }
+
+        case UPDATE_USER:
+            console.log('from redux', action.payload)
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    ...action.payload
                 }
             }
 

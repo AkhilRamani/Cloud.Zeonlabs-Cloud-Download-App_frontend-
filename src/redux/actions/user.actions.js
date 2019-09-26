@@ -1,4 +1,4 @@
-import {LOGOUT, STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE} from './types'
+import {LOGOUT, STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER} from './types'
 
 export const logout_redux = () => ({
     type: LOGOUT
@@ -14,4 +14,8 @@ export const increaseUsedSpace = fileSize => ({
 
 export const decreaseUsedSpace = fileSize => ({
     type: DECREASE_USED_SPACE, payload: fileSize
+})
+
+export const updateUser = pInfo => ({
+    type: UPDATE_USER, payload: pInfo
 })
