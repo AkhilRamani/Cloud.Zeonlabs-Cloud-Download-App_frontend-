@@ -1,4 +1,4 @@
-import {LOGOUT, STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER} from './types'
+import {LOGOUT, STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER, SAVE_AVATAR_URL} from './types'
 
 export const logout_redux = () => ({
     type: LOGOUT
@@ -18,4 +18,8 @@ export const decreaseUsedSpace = fileSize => ({
 
 export const updateUser = pInfo => ({
     type: UPDATE_USER, payload: pInfo
+})
+
+export const saveAvatarUrl = url => ({
+    type: SAVE_AVATAR_URL, payload: url
 })

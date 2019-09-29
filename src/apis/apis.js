@@ -64,3 +64,8 @@ export const updateProfile = (fileData) => {
         'content-type': 'multipart/form-data'
     }})
 }
+
+export const avatarUrl = userId => `${serverUrl}/avatar/${userId}`
+export const fetchAvatar = userId => {
+    return axios.get(`${serverUrl}/avatar/${userId}`, {responseType: 'blob'})
+}

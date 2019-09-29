@@ -9,6 +9,7 @@ import {ProfilePic} from './ProfilePic/ProfilePic.utility'
 import {LoadingBar} from './LoadingBar/LoadingBar.utility'
 import {notify} from './Notification/Notification.utility'
 import {NavHeader} from './NavHeader/NavHeader.utility'
+import {Typo} from './Typo/Typo.utility'
 
 export {
     Button,
@@ -21,5 +22,6 @@ export {
     ProfilePic,
     LoadingBar,
     notify,
-    NavHeader
+    NavHeader,
+    Typo
 }

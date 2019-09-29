@@ -27,7 +27,7 @@ const Header = (props) => {
                     <RoundIcon className='g-sklton-line h-pro-pic' />
                 :   <Popup 
                         trigger={<ProfilePic 
-                            src={props.user.avatar || null} 
+                            src={props.user.avatarUrl} 
                             text={formatAvatarChar(props.user.f_name, props.user.l_name)} 
                             className='h-pro-pic' />}
                         position='bottom right'

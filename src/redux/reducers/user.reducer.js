@@ -1,4 +1,5 @@
-import {STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER} from '../actions/types'
+import {STORE_USER, INCREASE_USED_SPACE, DECREASE_USED_SPACE, UPDATE_USER, SAVE_AVATAR_URL} from '../actions/types'
+import { getAvatarUrl } from '../../common/common.utils'
 
 const initialState = {
     user: {}
@@ -7,10 +8,16 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
     switch(action.type){
         case STORE_USER:
-            return { ...state, user: { ...state.user, ...action.user}}
+            const avatarUrl = action.user.avatar ? getAvatarUrl(action.user._id) : null
+            return { ...state,
+                user: { 
+                    ...state.user,
+                    ...action.user,
+                    avatarUrl
+                }
+            }
 
         case INCREASE_USED_SPACE:
-            console.log('action payload ===> ', action.payload)
             return {
                 ...state, 
                 user: {
@@ -23,7 +30,6 @@ export const userReducer = (state = initialState, action) => {
             }
 
         case DECREASE_USED_SPACE:
-            console.log('action.payload==', action.payload)
             return {
                 ...state,
                 user: {
@@ -36,12 +42,20 @@ export const userReducer = (state = initialState, action) => {
             }
 
         case UPDATE_USER:
-            console.log('from redux', action.payload)
             return {
                 ...state,
                 user: {
                     ...state.user,
                     ...action.payload
+                }
+            }
+
+        case SAVE_AVATAR_URL: 
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    avatarUrl: action.payload
                 }
             }
 

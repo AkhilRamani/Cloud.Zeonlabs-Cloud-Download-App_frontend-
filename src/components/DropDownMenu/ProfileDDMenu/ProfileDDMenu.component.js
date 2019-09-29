@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import './ProfileDDMenu.styles.scss'
-import {clearToken} from '../../../common/common.utils'
+import {clearLocalStorage} from '../../../common/common.utils'
 import {logoutUser} from '../../../apis/apis'
 import {logout_redux} from '../../../redux/actions/user.actions'
 import {ProfilePic} from '../../utility'
@@ -16,7 +16,8 @@ const ProfileDDMenu = (props) => {
     const _handleLogout = () => {
         logoutUser()
             .then(res => {
-                clearToken()
+                // clearToken()
+                clearLocalStorage()
                 //clear redux store
                 props.logout_redux()
                 props.history.push('/auth')
@@ -29,7 +30,7 @@ const ProfileDDMenu = (props) => {
     return(
         <div className='ddm-main h-ddm-main' >
             <div className='g-flex-ac h-ddm-profile-div' >
-                <ProfilePic src={props.user.avatar && `http://localhost:3001/avatar/${props.user._id}`} text={formatAvatarChar(props.user.f_name, props.user.l_name)} size={78} />
+                <ProfilePic src={props.user.avatarUrl} text={formatAvatarChar(props.user.f_name, props.user.l_name)} size={78} />
                 <div style={{paddingLeft: 20}} >
                     <h4 className='g-roboto' >{props.user.f_name +' '+ props.user.l_name}</h4>
                     <p className='g-roboto h-ddm-p-email' >{props.user.email}</p>

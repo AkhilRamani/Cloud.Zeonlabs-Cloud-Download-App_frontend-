@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import { Input, Button, ProfilePic } from '../../../utility'
+import { Input, Button, ProfilePic, Typo } from '../../../utility'
 import {EditIcon} from '../../../icons/icons'
 import { formatAvatarChar } from '../../../../Utils/utils'
 import { updateProfile } from '../../../../apis/apis'
-import { updateUser } from '../../../../redux/actions/user.actions'
+import { updateUser, saveAvatarUrl } from '../../../../redux/actions/user.actions'
+import { fetchAndStoreAvatar } from '../../../../common/common.utils'
 
 class PersonalInfo extends Component{
     state={
         avatar: '', avatarFile: null,
         f_name: '', l_name: '', f_nameErr: false, l_nameErr: false, f_nameEdited: false, l_nameEdited: false,
+        loading: false
     }
 
     _handleFileInputChange = (e) => {
@@ -24,8 +26,10 @@ class PersonalInfo extends Component{
 
     _fNameInputChange = e => this.setState({f_name: e.target.value.trim(), f_nameErr: false, f_nameEdited: true})
     _lNameInputChnage = e => this.setState({l_name: e.target.value.trim(), l_nameErr: false, l_nameEdited: true})
+    changeLoadingState = () => this.setState(state => ({loading: !state.loading}))
 
     _handleSubmit = () => {
+        this.changeLoadingState()
         let data = new FormData()
 
         this.setState(state => ({
@@ -49,20 +53,29 @@ class PersonalInfo extends Component{
 
     _handleUpdateProfileRequest = data => {
         updateProfile(data)
-            .then(res => {
-                console.log(res.data)
+            .then(async res => {
                 this.props.updateUser(res.data)
+                if(res.data.avatar){
+                    const avatarSaved = await fetchAndStoreAvatar(this.props.user._id)
+                    if(!avatarSaved) console.log('avatar not saved on localstorage')
+                }
             })
             .catch(e => console.log(e))
+            .finally(() => this.changeLoadingState())
     }
 
     render(){
-        const {f_name, l_name, email} = this.props.user
+        const {f_name, l_name, email, avatar, avatarUrl} = this.props.user
         return (
             <div className='epn-info-box g-round-corner g-flex' >
                 <div className='c-avatar-container g-flex-ac' >
                     <div className='c-avatar' >
-                        {f_name ? <ProfilePic src={this.state.avatar} size={120} text={formatAvatarChar(f_name, l_name)} textSize={40} />
+                        {f_name ? <ProfilePic 
+                                        src={(avatar && !this.state.avatarFile) ? avatarUrl : this.state.avatar} 
+                                        size={120} 
+                                        text={formatAvatarChar(f_name, l_name)} 
+                                        textSize={40} 
+                                    />
                                 : <div className='g-sklton-line g-skltn-bg-color' style={{width: 120, height: 120, borderRadius: '50%'}} />
                         }
                         <label htmlFor='file-input' ><EditIcon /></label>
@@ -89,7 +102,7 @@ class PersonalInfo extends Component{
                         <Input className='g-sklton-line epn-margin-b' disabled />
                     </>
                 }
-                <Button name='Update profile' style={{paddingLeft: 20, paddingRight: 20, marginTop: 10}} onClick={this._handleSubmit} />
+                <Button name='Update profile' style={{paddingLeft: 20, paddingRight: 20, marginTop: 10}} onClick={this._handleSubmit} loading={this.state.loading} />
             </div>
         )
     }
@@ -97,7 +110,8 @@ class PersonalInfo extends Component{
 
 const mapStateToProps = state => state.user
 const mapDispatchToProps = dispatch => ({
-    updateUser: pInfo => dispatch(updateUser(pInfo))
+    updateUser: pInfo => dispatch(updateUser(pInfo)),
+    saveAvatarUrl: url => dispatch(saveAvatarUrl(url))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo)
