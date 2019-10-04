@@ -14,16 +14,19 @@ const notifyMsgs = {
     DELETE_MSG: 'File deleted successfully',
     RENAME_MSG: 'File renamed successfully',
     DOWNLOADED_MSG: 'File downloaded successfully',
+    EDIT_PROFILE_SUCCESS: 'Profile updated',
+    PASS_RESET_SUCCESS: 'Password changed successfully',
+    FORGOT_PASS_REQ_SENT: 'Password reset email sent',
+    
     COMMON_ERR: 'Something went wrong!',
     INVALID_ACTI_URL: 'Invalid activation URL',
     ACTIVATED_MSG: 'Your account is now activated',
     WRONG_PASS: 'Incorrect Password',
     NO_USER_FOUND: 'No such user found!',
     UNVERIFIED_EMAIL: 'Your account is not verified yet',
-    FORGOT_PASS_REQ_SENT: 'Password reset email sent',
     EMAIL_NOT_FOUND: 'Email address not found',
     INVALID_PASS_RESET_URL: 'Invalid password reset url',
-    PASS_RESET_SUCCESS: 'Password changed successfully'
+    PASS_NOT_MATCH: 'Password does not match'
 }
 
 const routes = {

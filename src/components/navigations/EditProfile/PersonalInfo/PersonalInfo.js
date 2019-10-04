@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import { Input, Button, ProfilePic, Typo } from '../../../utility'
+import { Input, Button, ProfilePic, Typo, notify } from '../../../utility'
 import {EditIcon} from '../../../icons/icons'
 import { formatAvatarChar } from '../../../../Utils/utils'
 import { updateProfile } from '../../../../apis/apis'
 import { updateUser, saveAvatarUrl } from '../../../../redux/actions/user.actions'
 import { fetchAndStoreAvatar } from '../../../../common/common.utils'
+import { notifyMsgs } from '../../../../common/constants'
 
 class PersonalInfo extends Component{
     state={
@@ -29,7 +30,6 @@ class PersonalInfo extends Component{
     changeLoadingState = () => this.setState(state => ({loading: !state.loading}))
 
     _handleSubmit = () => {
-        this.changeLoadingState()
         let data = new FormData()
 
         this.setState(state => ({
@@ -52,13 +52,16 @@ class PersonalInfo extends Component{
     }
 
     _handleUpdateProfileRequest = data => {
+        this.changeLoadingState()
         updateProfile(data)
             .then(async res => {
                 this.props.updateUser(res.data)
                 if(res.data.avatar){
                     const avatarSaved = await fetchAndStoreAvatar(this.props.user._id)
+                    this.setState({avatarFile: null})
                     if(!avatarSaved) console.log('avatar not saved on localstorage')
                 }
+                notify(notifyMsgs.EDIT_PROFILE_SUCCESS)
             })
             .catch(e => console.log(e))
             .finally(() => this.changeLoadingState())

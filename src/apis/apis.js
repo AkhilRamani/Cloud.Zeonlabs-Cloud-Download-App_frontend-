@@ -69,3 +69,8 @@ export const avatarUrl = userId => `${serverUrl}/avatar/${userId}`
 export const fetchAvatar = userId => {
     return axios.get(`${serverUrl}/avatar/${userId}`, {responseType: 'blob'})
 }
+
+export const updatePassword = (old_password, password) => {
+    const token = getToken()
+    return axios.patch(`${serverUrl}/update/pass`, {old_password, password}, {headers: {[X_AUTH]: token}})
+}
