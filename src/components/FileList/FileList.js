@@ -22,6 +22,7 @@ class FileList extends Component {
     }
 
     render(){
+        console.log(this.props.files)
         return this.state.loading ? 
             <div className='g-flex-ac f-list-loader-div' >
                 <Spinner size={60} style={{margin: 20}} /> 

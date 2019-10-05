@@ -26,7 +26,7 @@ const Header = (props) => {
                 {!props.user.f_name ?
                     <RoundIcon className='g-sklton-line h-pro-pic' />
                 :   <Popup 
-                        trigger={<div>
+                        trigger={<div style={{cursor: 'pointer'}} >
                             <ProfilePic 
                                 src={props.user.avatarUrl} 
                                 text={formatAvatarChar(props.user.f_name, props.user.l_name)} 

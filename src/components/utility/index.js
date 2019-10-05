@@ -10,6 +10,7 @@ import {LoadingBar} from './LoadingBar/LoadingBar.utility'
 import {notify} from './Notification/Notification.utility'
 import {NavHeader} from './NavHeader/NavHeader.utility'
 import {Typo} from './Typo/Typo.utility'
+import {FileTypeIcon} from './FileTypeIcon/FileTypeIcon.utility'
 
 export {
     Button,
@@ -23,5 +24,6 @@ export {
     LoadingBar,
     notify,
     NavHeader,
-    Typo
+    Typo,
+    FileTypeIcon
 }
