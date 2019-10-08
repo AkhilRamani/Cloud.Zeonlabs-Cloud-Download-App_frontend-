@@ -4,8 +4,10 @@ import {connect} from 'react-redux'
 import './DriveInfoBox.styles.scss'
 import {addFile} from '../../redux/actions/file.action'
 import {increaseUsedSpace} from '../../redux/actions/user.actions'
-import {UrlInputUpload} from '../utility'
+import {UrlInputUpload, notify} from '../utility'
 import {uploadFile} from '../../apis/apis'
+import { isValidUrl } from '../../common/common.utils'
+import { notifyMsgs } from '../../common/constants'
 
 class AddFileBox extends React.Component{
     state={
@@ -16,59 +18,50 @@ class AddFileBox extends React.Component{
     changeLoadingState = () => this.setState(state =>({loading: !state.loading}))
 
     onUrlSubmit = async () => {
-        if(this.state.urlText){
-
-            this.changeLoadingState()   
-            uploadFile(this.state.urlText)
-            .then(res => {
-                const file = res.data
-                this.props.addFile({ _id: file._id, name: file.name, size: file.size, createdAt: file.createdAt, status: file.status})
-                this.props.increaseUsedSpace(file.size)
-                this.setState({urlText: ''})
-            })
-            .catch(e => {
-                console.log(e)
-            })
-            .finally(() => this.changeLoadingState())
-
+        if(!this.state.urlText) return null
+        if(isValidUrl(this.state.urlText)){
+            this.handleFileDownloadRequest(this.state.urlText)
+        }
+        else{
+            notify(notifyMsgs.INVALID_FILE_URL)
         }
     }
 
-    onInputChange = (e) => this.setState({urlText: e.target.value})
+    handleFileDownloadRequest = async url => {
+        this.changeLoadingState()
+        try{
+            const res = await uploadFile(url)
+            const file = res.data
+            this.props.addFile({ _id: file._id, name: file.name, size: file.size, type: file.type, createdAt: file.createdAt, status: file.status})
+            this.props.increaseUsedSpace(file.size)
+            this.setState({urlText: ''})
+        }
+        catch(e){
+            if(e.response){
+                switch(e.response.status){
+                    case 422:
+                        notify(notifyMsgs.INVALID_FILE_URL)
+                        break
+                    case 406:
+                        notify(notifyMsgs.FILE_NO_FOUND)
+                        break
+                    case 407: 
+                        notify(notifyMsgs.NO_STORG_SPACE)
+                        break
+                    default:
+                        notify(notifyMsgs.COMMON_ERR)
+                }
+            }
+            else notify(notifyMsgs.COMMON_ERR)
+        }
+        this.changeLoadingState()
+    }
+
+    onInputChange = (e) => this.setState({urlText: e.target.value.trim()})
 
     render(){
         return(
             <div className='drive-info-box'>
-                {/* <div className='dib-c-box g-flex' style={{}} >
-                    <p className='main-title g-roboto' >My drive</p>
-
-                    <div>
-                        <div className='g-flex-ac'>
-                            <div className='g-flex-ac dib-sub-div' >
-                                <p style={{ color: 'white', opacity: 0.9, fontWeight: '600' }} >Total available space :</p>
-                            </div>
-                        </div>
-                        <div className='g-flex-ac' style={{marginBottom: 3}} >
-                            <RoundYelloIcon size={22} />
-                            <div className='g-flex-ac dib-sub-div'>
-                                <Label title='767mb used' />
-                                <Label title='1gb total' />
-                            </div>
-                        </div>
-
-                        <div className='g-flex-ac' >
-                            <RoundYelloIcon size={22} />
-                            <div className='dib-sub-div' >
-                                <ProgressBar progress={60}/>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div style={{alignItems: 'center'}} >
-                    <Button name='Upgrade' />
-                </div> */}
-
                 <div className='g-flex dib-c-box' >
                 <p className='main-title g-roboto' >Add file</p>
                     <UrlInputUpload loading={this.state.loading}

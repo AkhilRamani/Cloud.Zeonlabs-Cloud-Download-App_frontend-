@@ -26,7 +26,11 @@ const notifyMsgs = {
     UNVERIFIED_EMAIL: 'Your account is not verified yet',
     EMAIL_NOT_FOUND: 'Email address not found',
     INVALID_PASS_RESET_URL: 'Invalid password reset url',
-    PASS_NOT_MATCH: 'Password does not match'
+    PASS_NOT_MATCH: 'Password does not match',
+
+    INVALID_FILE_URL: 'Invalid url to proceed',
+    FILE_NO_FOUND: 'File not found or unprocessable',
+    NO_STORG_SPACE: 'insufficient storage space to download'
 }
 
 const routes = {

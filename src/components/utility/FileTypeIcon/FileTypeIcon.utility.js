@@ -1,17 +1,15 @@
 import React from 'react'
 import FileIcon from 'react-file-icon'
-import {iconStyles} from './FileIconStyles'
+import {geticonStyles} from './FileIconStyles'
 
 export const FileTypeIcon = ({type}) => (
     <FileIcon 
         fold={false} 
-        // extension={type} 
-        // 52
         size={45} 
         radius={12} 
-        {...iconStyles[type]}
+        {...geticonStyles(type)}
+        glyphColor='gray'
         // color='#ffefd68c'
         // glyphColor='#ff9e00'
-        glyphColor='gray'
     />
 )

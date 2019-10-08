@@ -13,9 +13,6 @@ const FileItem = ({id, name, size, time, status, type}) => {
     return status==='uploading' ? (
         <div className='fi-container g-flex-ac skeleton-line' style={{justifyContent: 'space-between'}} >
             <div className='g-flex-ac'>
-
-                {/* <div style={{height: 40, width: 40, borderRadius: '50%', backgroundColor: '#EAF4FE', margin: 20}} /> */}
-                {/* <FileIcon extension='docx' /> */}
                 <div style={{margin: '14px 16px 12px 16px'}} >
                     <FileTypeIcon type={type.split('/')[1]} />
                 </div>

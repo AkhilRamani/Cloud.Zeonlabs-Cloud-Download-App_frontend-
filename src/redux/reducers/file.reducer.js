@@ -5,70 +5,118 @@ import {fileStatus} from '../../common/constants'
 
 const initialState = {
   files: [
-	  {
-    _id: 1,
-    name: 'Genius season1-episode4.mp4',
-    createdAt: '2019-08-12T16:55:24.747Z',
-	size: '43546535',
-	type: 'a/eps',
-    status: 'done'
-  },
-  {
-    _id: 3,
-    name: 'Old town road remix.mp3',
-    createdAt: '2019-06-10T17:23:59.388Z',
-	size: '234556',
-	type:'a/7zip',
-    status: 'done'
-  },
-  {
-    _id: 4,
-    name: 'Buildbox_full-primium.zip',
-    createdAt: '2019-06-04T13:38:17.804Z',
-	size: '457768764',
-	type:'a/max',
-    status: 'done'
-  },
-  {
-    _id: 5,
-    name: 'Image 66479x luxury-4rt_45Q.png',
-    createdAt: '2019-01-04T13:38:17.804Z',
-	size: '984255',
-	type:'a/3ds',
-    status: 'done'
-  },
-  {
-    _id: 6,
-    name: 'Audio-4rt_45Q.png',
-    createdAt: '2019-01-04T13:38:17.804Z',
-	size: '984255',
-	type:'a/mp3',
-    status: 'done'
-  },
-  {
-    _id: 7,
-    name: 'Zeonlabs presentation.ppt',
-    createdAt: '2019-01-04T13:38:17.804Z',
-	size: '984255',
-	type:'a/psd',
-    status: 'done'
-  },
-  {
-    _id: 8,
-    name: 'Zeonlabs presentation.ppt',
-    createdAt: '2019-01-04T13:38:17.804Z',
-	size: '984255',
-	type:'a/apk',
-    status: 'done'
-  },
-  {
-    _id: 9,
-    name: 'Zeonlabs presentation.ppt',
-    createdAt: '2019-01-04T13:38:17.804Z',
-	size: '984255',
-	type:'a/js',
-    status: 'done'
-  }
+	//   {
+  //   _id: 1,
+  //   name: 'Genius season1-episode4.mp4',
+  //   createdAt: '2019-08-12T16:55:24.747Z',
+	// size: '43546535',
+	// type: 'a/mp4',
+  //   status: 'uploading'
+  // },
+  // {
+  //   _id: 3,
+  //   name: 'Old town road remix.rar',
+  //   createdAt: '2019-06-10T17:23:59.388Z',
+	// size: '234556',
+	// type:'a/rar',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 4,
+  //   name: 'Buildbox_full-primium.max',
+  //   createdAt: '2019-06-04T13:38:17.804Z',
+	// size: '457768764',
+	// type:'a/max',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 5,
+  //   name: 'zeonlabs-documentation-4rt_45Q.pdf',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+	// size: '984255',
+	// type:'a/pdf',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 6,
+  //   name: 'Audio-4rt_45Q.mp3',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+	// size: '984255',
+	// type:'a/mp3',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 7,
+  //   name: 'Zeonlabs presentation.ttf',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+	// size: '984255',
+	// type:'a/ttf',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 8,
+  //   name: 'Zeonlabs-mobile.apk',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984255',
+  //   type:'a/apk',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 9,
+  //   name: 'Zeonlabs presentation.iso',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984255',
+  //   type:'as/iso',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 10,
+  //   name: 'msi-zeon procedure.bat',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984255',
+  //   type:'as/bat',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 11,
+  //   name: 'logo_zeonlabs_vector.eps',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984255',
+  //   type:'as/eps',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 12,
+  //   name: 'Zeonlabs presentation.ppt',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984255',
+  //   type:'as/ppt',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 13,
+  //   name: 'project-report_v2.1.doc',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '984278',
+  //   type:'as/doc',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 14,
+  //   name: 'spreadsheet_keywords.xls',
+  //   createdAt: '2019-01-04T13:38:17.804Z',
+  //   size: '184255',
+  //   type:'as/xls',
+  //   status: 'done'
+  // },
+  // {
+  //   _id: 15,
+  //   name: 'root_mutation.controller.java',
+  //   createdAt: '2019-05-04T13:38:17.804Z',
+  //   size: '384215',
+  //   type:'as/java',
+  //   status: 'done'
+  // }
   ],
 };
 
@@ -115,35 +163,3 @@ export const  fileReducer = (state = initialState, action) => {
 			return state;
     }
 };
-
-
-
-//============> dummy data
-// {
-//     _id: 1,
-//     name: 'Genius season1-episode4.mp4',
-//     createdAt: '2019-08-12T16:55:24.747Z',
-//     size: '43546535',
-//     status: 'uploading'
-//   },
-//   {
-//     _id: 3,
-//     name: 'Old town road remix.mp3',
-//     createdAt: '2019-06-10T17:23:59.388Z',
-//     size: '234556',
-//     status: 'done'
-//   },
-//   {
-//     _id: 4,
-//     name: 'Buildbox_full-primium.zip',
-//     createdAt: '2019-06-04T13:38:17.804Z',
-//     size: '457768764',
-//     status: 'done'
-//   },
-//   {
-//     _id: 5,
-//     name: 'Image 66479x luxury-4rt_45Q.png',
-//     createdAt: '2019-01-04T13:38:17.804Z',
-//     size: '984255',
-//     status: 'done'
-//   }

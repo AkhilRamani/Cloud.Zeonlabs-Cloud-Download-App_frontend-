@@ -8,6 +8,11 @@ const getToken = () => localStorage.getItem(LOCAL_STORAGE_LABLES.TOKEN)
 const clearToken = () => localStorage.removeItem(LOCAL_STORAGE_LABLES.TOKEN)
 const clearLocalStorage = () => localStorage.clear()
 
+const isValidUrl = url =>{
+    const res = url.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/g)
+    return res ? true : false
+}
+
 const convertToBase64 = data => {
     const reader = new FileReader()
     return new Promise((resolve, reject) => {
@@ -37,6 +42,7 @@ export {
     storeToken,
     getToken,
     clearToken,
+    isValidUrl,
     clearLocalStorage,
     fetchAndStoreAvatar,
     getAvatarUrl

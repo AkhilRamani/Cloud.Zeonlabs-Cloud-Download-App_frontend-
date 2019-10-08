@@ -1,27 +1,3 @@
-const Theme = {
-    blue: {
-        color: '#F0F8FF',
-        glyphColor: '#57B1FF'
-    },
-    purple: {
-        color: '#EAEAFA',
-        labelColor: '#5116ad',
-        glyphColor: '#6666E0'
-    },
-    orange: {
-        color: '#ffa50021',
-        labelColor: 'orange',
-        glyphColor: '#ffa500d1'
-    },
-    red: {
-      color: '#ff11001a',
-      glyphColor: '#ff000094'
-    },
-    yellow: {
-      color: '#FFF8E0',
-      glyphColor: '#FFD943'
-    }
-}
 const type = {
   settings: { type: 'settings' },
   video: { type: 'video' },
@@ -40,7 +16,7 @@ const type = {
   binary: {type: 'binary'}
 }
 
-export const iconStyles = {
+const iconStyles = {
     '3dm': type.threeD,
     '3ds': type.threeD,
     '3g2': type.video,
@@ -58,6 +34,7 @@ export const iconStyles = {
     avi: type.video,
     bin: type.binary,
     bmp: type.image,
+    bat: type.binary,
     c: type.code,
     cpp: type.code,
     cs: type.code,
@@ -86,6 +63,7 @@ export const iconStyles = {
     html: type.code,
     indd: type.document,
     ini: type.settings,
+    iso: type.drive,
     java: type.code,
     jpeg: type.image,
     jpg: type.image,
@@ -131,12 +109,14 @@ export const iconStyles = {
     swf: type.video,
     sys: type.settings,
     tar: type.compressed,
+    'tar.gz': type.compressed,
     tex: type.document,
     tif: type.image,
     tiff: type.image,
     ts: type.code,
     ttf: type.font,
     txt: type.document,
+    vob: type.video,
     wav: type.audio,
     webm: type.video,
     wmv: type.video,
@@ -149,4 +129,6 @@ export const iconStyles = {
     yml: type.code,
     zip: type.compressed,
     zipx: type.compressed
-  };
+  }
+
+export const geticonStyles = fileType => iconStyles[fileType] || type.drive
