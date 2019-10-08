@@ -4,7 +4,72 @@ import _ from 'lodash'
 import {fileStatus} from '../../common/constants'
 
 const initialState = {
-  files: [],
+  files: [
+	  {
+    _id: 1,
+    name: 'Genius season1-episode4.mp4',
+    createdAt: '2019-08-12T16:55:24.747Z',
+	size: '43546535',
+	type: 'a/eps',
+    status: 'done'
+  },
+  {
+    _id: 3,
+    name: 'Old town road remix.mp3',
+    createdAt: '2019-06-10T17:23:59.388Z',
+	size: '234556',
+	type:'a/7zip',
+    status: 'done'
+  },
+  {
+    _id: 4,
+    name: 'Buildbox_full-primium.zip',
+    createdAt: '2019-06-04T13:38:17.804Z',
+	size: '457768764',
+	type:'a/max',
+    status: 'done'
+  },
+  {
+    _id: 5,
+    name: 'Image 66479x luxury-4rt_45Q.png',
+    createdAt: '2019-01-04T13:38:17.804Z',
+	size: '984255',
+	type:'a/3ds',
+    status: 'done'
+  },
+  {
+    _id: 6,
+    name: 'Audio-4rt_45Q.png',
+    createdAt: '2019-01-04T13:38:17.804Z',
+	size: '984255',
+	type:'a/mp3',
+    status: 'done'
+  },
+  {
+    _id: 7,
+    name: 'Zeonlabs presentation.ppt',
+    createdAt: '2019-01-04T13:38:17.804Z',
+	size: '984255',
+	type:'a/psd',
+    status: 'done'
+  },
+  {
+    _id: 8,
+    name: 'Zeonlabs presentation.ppt',
+    createdAt: '2019-01-04T13:38:17.804Z',
+	size: '984255',
+	type:'a/apk',
+    status: 'done'
+  },
+  {
+    _id: 9,
+    name: 'Zeonlabs presentation.ppt',
+    createdAt: '2019-01-04T13:38:17.804Z',
+	size: '984255',
+	type:'a/js',
+    status: 'done'
+  }
+  ],
 };
 
 export const  fileReducer = (state = initialState, action) => {

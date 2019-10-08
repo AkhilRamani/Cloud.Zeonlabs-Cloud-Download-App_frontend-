@@ -37,6 +37,7 @@ class FileList extends Component {
                             size={file.size}
                             time={file.createdAt}
                             status={file.status}
+                            type={file.type}
                         />
                     ))
                 : <div className='f-list-loader-div f-list-empty-screen g-flex-ac'>
