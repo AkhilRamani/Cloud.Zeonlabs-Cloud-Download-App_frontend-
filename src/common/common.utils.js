@@ -13,6 +13,8 @@ const isValidUrl = url =>{
     return res ? true : false
 }
 
+const getFileSharingUrl = fileId => `https://cloud.zeonlabs.co/file=share/${fileId}`
+
 const convertToBase64 = data => {
     const reader = new FileReader()
     return new Promise((resolve, reject) => {
@@ -37,13 +39,16 @@ const fetchAndStoreAvatar = async userId => {
 }
 
 const getAvatarUrl = userId => localStorage ? localStorage.getItem('avatar') : avatarUrl(userId)
+function formatBytes(a,b){if(0===a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
 
 export {
     storeToken,
     getToken,
     clearToken,
     isValidUrl,
+    getFileSharingUrl,
     clearLocalStorage,
     fetchAndStoreAvatar,
-    getAvatarUrl
+    getAvatarUrl,
+    formatBytes
 }

@@ -1,0 +1,25 @@
+.df-main{
+    .df-wb{
+        background-color: white;
+        margin: 20px auto;
+        width: fit-content;
+        padding: 30px;
+        flex-direction: column;
+        min-width: 400px;
+
+        p{
+            font-size: 15px;
+            padding: 10px 0;
+            color: #c2c2c2;
+        }
+
+        .df-wb-f-info{
+            width: 100%
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .df-wb{
+            min-width: 77%;
+        }
+    }
+}

@@ -36,7 +36,12 @@ const notifyMsgs = {
 const routes = {
     APP: '/',
     EDIT_PROFILE: '/edit/profile',
-    AUTH: '/auth'
+    AUTH: '/auth',
+    DOWNLD_FILE: '/file=share/:id',
+    T_AND_C: '/tandc',
+    ACTIVATE_ACCOUNT: '/activate/:uuid',
+    RESET_PASS: '/reset/pass/:uuid',
+    FORGOT_PASS: '/req=reset-pass'
 }
 
 export {

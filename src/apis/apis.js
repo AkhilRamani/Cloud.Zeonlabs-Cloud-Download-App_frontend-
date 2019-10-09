@@ -8,6 +8,8 @@ export const uploadFile = async (url) => {
     return axios.post(`${serverUrl}/upload`, {url}, {headers: {[X_AUTH]: token}})
 }
 
+export const getFile = fileId => axios.get(`${serverUrl}/file/${fileId}`)
+
 export const getAllFiles = async () => {
     const token = await getToken()
     return axios.get(`${serverUrl}/file/all`, {headers: {[X_AUTH]: token}})

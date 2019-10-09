@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import { Input, Button, ProfilePic, Typo, notify } from '../../../utility'
+import { Input, Button, ProfilePic, notify } from '../../../utility'
 import {EditIcon} from '../../../icons/icons'
 import { formatAvatarChar } from '../../../../Utils/utils'
 import { updateProfile } from '../../../../apis/apis'

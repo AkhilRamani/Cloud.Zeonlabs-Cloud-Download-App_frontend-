@@ -10,6 +10,7 @@ import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
 import {decreaseUsedSpace} from '../../redux/actions/user.actions'
 import {serverUrl, notifyMsgs} from '../../common/constants'
+import { getFileSharingUrl } from '../../common/common.utils'
 
 
 const DdMenuItem = ({name, onClick, Icon}) => (
@@ -33,7 +34,7 @@ const popupSideMenuStyle = {padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0
 const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile, decreaseUsedSpace}) => {
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(fileName)
-    const [shareUrl] = useState(`https://cloud.zeonlabs.co/${fileId}`)
+    const [shareUrl] = useState(getFileSharingUrl(fileId))
 
     const changeLoadingState = () => setLoading(!loading)
 
