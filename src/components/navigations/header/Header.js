@@ -8,14 +8,8 @@ import {ProfilePic} from '../../utility'
 import {RoundIcon} from '../../icons/round.icon'
 import ProfileDDMenu from '../../DropDownMenu/ProfileDDMenu/ProfileDDMenu.component'
 import {formatAvatarChar} from '../../../Utils/utils'
-// import {store} from '../../../redux/Store'
-
-// const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRQOjHieQruxL-k7StNOP-KTKQXtqkWuspuG6vjnKbg901k_JIA'
 
 const Header = (props) => {
-    // const [state, setState] = useState({user: null})
-    // const unsubscribe = store.subscribe(() => console.log(setState(store.getState())))
-
     return (
         <div className="header-container" >
             <h2 className='header-logo g-source-sans'><font style={{color: '#FDD235'}} >Cloud.</font>Zeonlabs</h2>
@@ -23,7 +17,9 @@ const Header = (props) => {
                 <RoundIcon/>
                 <RoundIcon/>
                 
-                {props.authenticated &&
+                {
+                    props.authenticated &&
+                    // isAuthenticated() &&
                     (
                         !props.user.f_name ?
                             <RoundIcon className='g-sklton-line h-pro-pic' />

@@ -10,10 +10,12 @@ const FileInfo = props => {
     useEffect(() => {
         getFile(props.match.params.id)
             .then(res => {
+                console.log(res.data.url)
                 setFileInfo(res.data)
             })
             .catch(e => {})
-    }, [])
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [])
 
     return (
         <>
@@ -40,7 +42,7 @@ const FileInfo = props => {
             </div>
             <div className='g-flex' style={{alignSelf: 'stretch', justifyContent: 'flex-end'}} >
                 {fileInfo.name
-                    ? <Button style={{width: 160}} name='Download' />
+                    ? <a href={fileInfo.url} ><Button style={{width: 160}} name='Download' /></a>
                     : <div className='g-round-corner g-sklton-color g-sklton-line' style={{width: 160, height: 40}} />
                 }
             </div>
