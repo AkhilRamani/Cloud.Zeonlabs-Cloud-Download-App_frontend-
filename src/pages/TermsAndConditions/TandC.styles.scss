@@ -1,0 +1,27 @@
+.tnc-main{
+    padding: 0 80px 60px;
+
+    .tnc-container{
+        width: fit-content;
+        padding: 40px 80px;
+        margin-top: 10px;
+
+        strong{
+            opacity: 0.85;
+        }
+        p, li{
+            opacity: 0.74;
+            font-size: 15.3px;
+            line-height: 20px;
+        }
+    }
+}
+@media only screen and (max-width: 768px){
+    .tnc-main{
+        padding: 0 10px 10px;
+
+        .tnc-container{
+            padding: 20px 30px;
+        }
+    }
+}

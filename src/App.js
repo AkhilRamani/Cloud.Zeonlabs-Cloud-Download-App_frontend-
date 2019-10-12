@@ -12,6 +12,7 @@ import ResetPassword from './pages/ForgotPass/ResetPassword';
 import EditProfile from './pages/EditProfile/EditProfile';
 import { routes } from './common/constants';
 import DownloadFile from './pages/DownloadFile/DownloadFile';
+import TandC from './pages/TermsAndConditions/TandC';
 
 function App() {
   	return (
@@ -21,7 +22,7 @@ function App() {
 				<Route path={routes.FORGOT_PASS} exact component={ForgotPass} />
 				<Route path={routes.RESET_PASS} exact component={ResetPassword} />
 				<Route path={routes.ACTIVATE_ACCOUNT} exact component={ActivateAccount} />
-				<Route path={routes.T_AND_C} exact component={Auth} />
+				<Route path={routes.T_AND_C} exact component={TandC} />
 				<Route path={routes.DOWNLD_FILE} exact component={DownloadFile} />
 
 				<ProtectedRoute path='/' exact component={MainApp} />

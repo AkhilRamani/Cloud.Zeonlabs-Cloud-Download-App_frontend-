@@ -10,7 +10,6 @@ const FileInfo = props => {
     useEffect(() => {
         getFile(props.match.params.id)
             .then(res => {
-                console.log(res.data.url)
                 setFileInfo(res.data)
             })
             .catch(e => {})
