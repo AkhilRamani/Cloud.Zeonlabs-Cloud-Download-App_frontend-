@@ -68,6 +68,8 @@ export const updateProfile = (fileData) => {
 }
 
 export const avatarUrl = userId => `${serverUrl}/avatar/${userId}`
+export const fileDownloadUrl = fileId => `${serverUrl}/file/download/${fileId}`
+
 export const fetchAvatar = userId => {
     return axios.get(`${serverUrl}/avatar/${userId}`, {responseType: 'blob'})
 }

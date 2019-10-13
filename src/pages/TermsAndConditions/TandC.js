@@ -12,8 +12,8 @@ const TandC  = props => {
             <div className='g-flex-ac' style={{flexDirection: 'column'}} >
                 <Logo style={{padding: 40}} />
                 <div className='tnc-container g-white-box g-round-corner' >
-                    <NavHeader title={<font style={{fontSize: 22}}>Terms and Conditions</font>} onBackClick={onBackButtonClick} style={{marginLeft: -12}} />
-                    {/* <h2><strong>Terms and Conditions</strong></h2> */}
+                    <NavHeader title={<font style={{fontSize: 19}}>Terms and Conditions</font>} onBackClick={onBackButtonClick} style={{marginLeft: -12}} />
+                    <div style={{height: 20}} />
 
                     <p>Welcome to Cloud.Zeonlabs!</p>
 

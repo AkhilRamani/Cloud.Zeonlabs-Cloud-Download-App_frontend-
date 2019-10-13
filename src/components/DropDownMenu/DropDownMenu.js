@@ -6,7 +6,7 @@ import CopyToClipBoard from 'react-copy-to-clipboard'
 import './dropDownMenu.style.scss'
 import {Button, notify, Input} from '../utility'
 import {ShareIcon, DeleteIcon, RenameIcon, DownloadIcon, ErrorOutlineIcon, LinkIcon, InputIcon} from '../icons/icons'
-import { deleteFile as deleteFileApi, renameFile as renameFileApi } from '../../apis/apis';
+import { deleteFile as deleteFileApi, renameFile as renameFileApi, fileDownloadUrl } from '../../apis/apis';
 import {deleteFile as deleteReduxFile, renameFile as renameReduxFile} from '../../redux/actions/file.action'
 import {decreaseUsedSpace} from '../../redux/actions/user.actions'
 import {serverUrl, notifyMsgs} from '../../common/constants'
@@ -70,7 +70,8 @@ const DropDownMenu = ({fileId, close, fileName, deleteReduxFile, renameReduxFile
     }
 
     const downloadFile = () => {
-        window.open(`${serverUrl}/file/download/${fileId}`, '_blank')
+        // window.open(`${serverUrl}/file/download/${fileId}`, '_blank')
+        window.location = fileDownloadUrl(fileId)
         close()
     }
 
