@@ -16,6 +16,14 @@ $animationTransition: all 0.3s cubic-bezier(.25,.8,.25,1);
         transition: $animationTransition;
         fill: #b5bec9
     }
+
+    .fi-failed-lable{
+      color: #ffffffc7;
+      background-color: #ff2000cf;
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 50px;
+    }
 }
 .fi-container-active:hover{
     box-shadow: 0 14px 28px rgba(153, 153, 153, 0.068), 0 10px 10px rgba(66, 66, 66, 0.247);
