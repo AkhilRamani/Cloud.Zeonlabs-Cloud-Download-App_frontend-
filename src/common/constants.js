@@ -1,6 +1,7 @@
 const fileStatus = {
     UPLOADING: 'uploading',
-    DONE: 'done'
+    DONE: 'done',
+    FAILED: 'failed'
 }
 
 const serverUrl = 'http://localhost:3001';
@@ -14,6 +15,7 @@ const notifyMsgs = {
     DELETE_MSG: 'File deleted successfully',
     RENAME_MSG: 'File renamed successfully',
     DOWNLOADED_MSG: 'File downloaded successfully',
+    DOWNLD_FAILED: 'File downloading failed',
     EDIT_PROFILE_SUCCESS: 'Profile updated',
     PASS_RESET_SUCCESS: 'Password changed successfully',
     FORGOT_PASS_REQ_SENT: 'Password reset email sent',

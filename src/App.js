@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Route, Switch} from 'react-router-dom'
 
 import './styles/global.styles.scss'
@@ -13,8 +13,13 @@ import EditProfile from './pages/EditProfile/EditProfile';
 import { routes } from './common/constants';
 import DownloadFile from './pages/DownloadFile/DownloadFile';
 import TandC from './pages/TermsAndConditions/TandC';
+import { fetchProfile } from './apis/sendRequest.api';
 
 function App() {
+	useEffect(() => {
+		fetchProfile()
+	}, [])
+
   	return (
   		<ReduxWrapper>
 			<Switch>

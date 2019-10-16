@@ -7,6 +7,7 @@ import {VerifiedUserIcon} from '../../components/icons/icons'
 import {PRIMARY_COLOR} from '../../styles/color.theme'
 import {activateUser} from '../../apis/apis'
 import {notifyMsgs} from '../../common/constants'
+import { fetchProfile } from '../../apis/sendRequest.api'
 
 /**
  * 
@@ -24,6 +25,7 @@ const ActivateAccount = (props) => {
                 console.log(res.data)
                 storeToken(res.data.token)
                 changeLoadingState()
+                fetchProfile()
                 notify(notifyMsgs.ACTIVATED_MSG)
                 props.history.replace('/')
             })

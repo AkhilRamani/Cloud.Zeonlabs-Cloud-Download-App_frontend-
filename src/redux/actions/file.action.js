@@ -8,8 +8,8 @@ export const deleteFile = _id => ({
   type: DELETE_FILE, _id
 })
 
-export const changeFileStatus = _id => ({
-  type: CHANGE_FILE_STATUS, _id
+export const changeFileStatus = (_id, status) => ({
+  type: CHANGE_FILE_STATUS, payload: {_id, status}
 })
 
 export const renameFile = (_id, name) => ({

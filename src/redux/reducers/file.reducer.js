@@ -1,8 +1,6 @@
 import {ADD_FILE, DELETE_FILE, CHANGE_FILE_STATUS, RENAME_FILE} from '../actions/types'
 import _ from 'lodash'
 
-import {fileStatus} from '../../common/constants'
-
 const initialState = {
   files: [
 	  {
@@ -132,9 +130,10 @@ export const  fileReducer = (state = initialState, action) => {
 			}
 
 		case CHANGE_FILE_STATUS:{
-			const index = _.findIndex(state.files, {_id: action._id})
+			const index = _.findIndex(state.files, {_id: action.payload._id})
 			var updatedFile = state.files[index];
-			updatedFile.status = fileStatus.DONE
+			// updatedFile.status = fileStatus.DONE
+			updatedFile.status = action.payload.status
 
 			return {
 				...state,

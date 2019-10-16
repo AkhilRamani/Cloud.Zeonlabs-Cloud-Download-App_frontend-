@@ -30,7 +30,6 @@ class Signup extends React.Component{
             .then(res => {
                 storeToken(res.data.token)
                 this.changeLoadingState()
-                // this.props.success()
                 this.setState({verifyScreen: true})
             })
             .catch(({response}) =>{
@@ -63,7 +62,6 @@ class Signup extends React.Component{
                 this.handleSignUP()
             }
             else{
-                console.log('password does not match')
                 this.setInputErr('password')
                 this.setInputErr('cpassword')
             }
