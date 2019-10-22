@@ -1,5 +1,6 @@
 .epn-conatiner{
-    padding: 12px;
+    padding: 2px 12px 12px;
+    flex-direction: column;
 
     .epn-ib-title{
         opacity: 0.4;
@@ -11,6 +12,22 @@
     .epn-sub-catagory{
         // flex: 0 0 50%;
         flex: 1 1;
+    }
+
+    .epn-plan-info-box{
+        // background-color: #2742d7;
+        // background-color: #3a53db;
+        background-color: white;
+        margin-bottom: 30px;
+        padding: 20px 30px 20px 25px;
+        justify-content: space-between;
+
+        h3{
+            // color: rgba(255, 255, 255, 0.918);
+            color: rgba(0, 0, 0, 0.719);
+            font-size: 20px;
+            margin-left: 15px;
+        }
     }
 
     .epn-info-box{

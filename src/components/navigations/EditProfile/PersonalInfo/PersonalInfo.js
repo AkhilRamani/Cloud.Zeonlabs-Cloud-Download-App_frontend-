@@ -9,6 +9,8 @@ import { updateUser, saveAvatarUrl } from '../../../../redux/actions/user.action
 import { fetchAndStoreAvatar } from '../../../../common/common.utils'
 import { notifyMsgs } from '../../../../common/constants'
 
+import Resizer from 'react-image-file-resizer' 
+
 class PersonalInfo extends Component{
     state={
         avatar: '', avatarFile: null,
@@ -19,10 +21,32 @@ class PersonalInfo extends Component{
     _handleFileInputChange = (e) => {
         const file = e.target.files[0]
         console.log(file)
-        file && this.setState({
-            avatar: URL.createObjectURL(file),
-            avatarFile: file
-        })
+        // file && this.setState({
+        //     // avatar: URL.createObjectURL(file),
+        //     avatarFile: file
+        // })
+
+        file && Resizer.imageFileResizer(
+            file,
+            200,
+            200,
+            'JPEG',
+            100,
+            0,
+            blob => {
+                console.log('image converted')
+                const convertedFile = new File([blob], 'convertedImage.jpeg', {
+                    type: 'image/jpeg',
+                    lastModified: Date.now()
+                });
+                this.setState({
+                    avatar: URL.createObjectURL(convertedFile),
+                    avatarFile: convertedFile
+                })
+                console.log(convertedFile)
+            },
+            'blob'
+        )
     }
 
     _fNameInputChange = e => this.setState({f_name: e.target.value.trim(), f_nameErr: false, f_nameEdited: true})
