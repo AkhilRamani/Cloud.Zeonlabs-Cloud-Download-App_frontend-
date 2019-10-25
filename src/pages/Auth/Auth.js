@@ -23,12 +23,12 @@ const Auth = ({history}) => {
         isAuthenticated() ? setAuthenticatedState() : setLoading(false)
     }, [])
 
-    return (<div className='auth-main-container g-flex-ac'>
+    return (<div className='g-blu-screen-fill g-flex-ac'>
             {loading ? <LoadingBar style={{margin: 'auto'}} />
             : (
                 loggedIn ? <Redirect to='/' />
             
-                 :(<div className='auth-box g-round-corner' >
+                 :(<div className='g-sml-white-box g-round-corner' >
                     <div className='g-flex-ac' style={{justifyContent: 'space-between'}} >
                         <Logo />
                         <button className='auth-toggle-btn' onClick={() => setAuthToggle(!authToggle)} >{authToggle ? 'Sign up': 'Sign in'}</button>

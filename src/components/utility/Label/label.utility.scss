@@ -1,13 +1,11 @@
 .utl-label{
     padding: 6px 10px 5px 10px;
-    background-color: #4AA8FF;
     border-radius: 5px;
-    width: fit-content;
-
-    p{
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin: 0;
-        color: white
-    }
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0;
+    color: white
+}
+.utl-l-rnd-s{
+    border-radius: 20px!important;
 }

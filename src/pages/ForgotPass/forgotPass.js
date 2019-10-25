@@ -51,7 +51,7 @@ const ForgotPass = () => {
                         <Input err={emailErr} placeholder='Email' type='text' value={email} onChange={_handleInputChange} />
                         <Button name='Send me email' style={{width: '100%', margin: '30px 0 15px'}} onClick={_handleSubmit} loading={loading} disabled={loading} />
                         <div className='g-flex-ac' style={{flexDirection: 'column'}} >
-                            <p className='g-roboto g-bsf-sub-text' style={{fontSize: 13}} >Did you remember your password? <Link className='link' to='/auth' >Try logging in</Link></p>
+                            <p className='g-roboto g-bsf-sub-text' style={{fontSize: 14}} >Did you remember your password? <Link className='link' to='/auth' >Try Login</Link></p>
                         </div>
                     </div>
                     :

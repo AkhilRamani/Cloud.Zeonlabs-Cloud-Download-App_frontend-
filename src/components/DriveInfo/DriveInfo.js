@@ -14,7 +14,7 @@ const DriveInfo = (props) => {
             <div className='dinfo-container' >
                 <div className='dinfo-progress-div' >
                     <div className='g-flex-ac' style={{paddingBottom: 8}} >
-                        <Label title={formatPercentage(storage.used, storage.space) + '%'} />
+                        <Label.Default title={formatPercentage(storage.used, storage.space) + '%'} />
                         <h4 className='g-roboto dinfo-progress-text' >&nbsp;Used</h4>
                     </div>
                     <ProgressBar progress={formatPercentage(storage.used, storage.space)} />

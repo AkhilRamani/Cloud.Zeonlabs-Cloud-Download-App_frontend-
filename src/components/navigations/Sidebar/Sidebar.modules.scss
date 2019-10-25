@@ -10,8 +10,15 @@
     .sb-title-div{
         padding: 26px 35px 23px;
         background-color: #FDD235;
+        justify-content: space-between;
         h3{
             opacity: 0.5;
+        }
+        .accnt-type-sclton{
+            width: 90px;
+            height: 27px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.089);
         }
     }
 

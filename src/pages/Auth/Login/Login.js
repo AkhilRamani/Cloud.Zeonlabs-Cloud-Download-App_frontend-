@@ -76,11 +76,11 @@ class Login extends  React.Component{
                     <Input err={this.state.emailErr} type='text' placeholder='email' className='auth-input' onChange={event => this._handleInputChange(event, 'email')} />
                     <Input err={this.state.passwordErr} type='password' placeholder='password' className='auth-input' onChange={event => this._handleInputChange(event, 'password')} />
 
-                    <div className='g-flex-ac' style={{justifyContent: 'space-between', alignSelf: 'stretch'}} >
-                        <div className='g-flex-ac' >
+                    <div className='g-flex-ac' style={{justifyContent: 'flex-end', alignSelf: 'stretch'}} >
+                        {/* <div className='g-flex-ac' >
                             <Input type='checkbox' />
                             <p className='g-roboto login-sub-text'>Remember me</p>
-                        </div>
+                        </div> */}
                         <Link className='g-roboto login-f-pass' to='/req=reset-pass' >Forgot password</Link>
                     </div>
                 </div>

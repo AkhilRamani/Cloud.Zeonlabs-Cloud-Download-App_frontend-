@@ -6,7 +6,7 @@ import { NavHeader} from '../../utility'
 import { routes } from '../../../common/constants'
 import PersonalInfo from './PersonalInfo/PersonalInfo'
 import ChangePassword from './ChangePassword/ChangePassword'
-import PlanInfo from './PlanInfo/PlanInfo'
+// import PlanInfo from './PlanInfo/PlanInfo'
 
 const EditProfileNavigation = props => (
     <div style={{padding: 20}} >
@@ -18,10 +18,10 @@ const EditProfileNavigation = props => (
 
         <div className='epn-conatiner g-flex' >
             
-            <>
+            {/* <>
                 <h4 className='g-roboto epn-ib-title'>My Plan</h4>
                 <PlanInfo />
-            </>
+            </> */}
             <div className='g-flex' >
                 <div className='epn-sub-catagory' >
                     <h4 className='g-roboto epn-ib-title' >Personal info</h4>
