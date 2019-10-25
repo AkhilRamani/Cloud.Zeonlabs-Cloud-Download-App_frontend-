@@ -3,22 +3,22 @@ import _ from 'lodash'
 
 const initialState = {
   files: [
-	  {
-      _id: 1,
-      name: 'Genius season1-episode4.mp4',
-      createdAt: '2019-08-12T16:55:24.747Z',
-      size: '43546535',
-      type: 'a/mp4',
-      status: 'failed'
-  },
-  {
-    _id: 3,
-    name: 'Old town road remix.rar',
-    createdAt: '2019-06-10T17:23:59.388Z',
-	size: '234556',
-	type:'a/rar',
-    status: 'done'
-  },
+	//   {
+  //     _id: 1,
+  //     name: 'Genius season1-episode4.mp4',
+  //     createdAt: '2019-08-12T16:55:24.747Z',
+  //     size: '43546535',
+  //     type: 'a/mp4',
+  //     status: 'failed'
+  // },
+  // {
+  //   _id: 3,
+  //   name: 'Old town road remix.rar',
+  //   createdAt: '2019-06-10T17:23:59.388Z',
+	// size: '234556',
+	// type:'a/rar',
+  //   status: 'done'
+  // },
   // {
   //   _id: 4,
   //   name: 'Buildbox_full-primium.max',

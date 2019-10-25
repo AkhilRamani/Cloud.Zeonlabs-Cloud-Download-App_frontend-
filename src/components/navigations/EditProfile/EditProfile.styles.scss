@@ -46,6 +46,7 @@
             margin-bottom: 30px;
             .c-avatar{
                 position: relative;
+                height: 120px;
                 svg{
                     position: absolute;
                     bottom: 5px;
@@ -66,6 +67,12 @@
             #file-input{
                 display: none;
             }
+        }
+        .img-process-div{
+            background-color: rgb(231, 231, 231);
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
         }
     }
 }

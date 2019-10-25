@@ -1,52 +1,34 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import { Input, Button, ProfilePic, notify } from '../../../utility'
+import { Input, Button, ProfilePic, notify, Spinner } from '../../../utility'
 import {EditIcon} from '../../../icons/icons'
 import { formatAvatarChar } from '../../../../Utils/utils'
 import { updateProfile } from '../../../../apis/apis'
 import { updateUser, saveAvatarUrl } from '../../../../redux/actions/user.actions'
-import { fetchAndStoreAvatar } from '../../../../common/common.utils'
+import { fetchAndStoreAvatar, resizeImage } from '../../../../common/common.utils'
 import { notifyMsgs } from '../../../../common/constants'
-
-import Resizer from 'react-image-file-resizer' 
 
 class PersonalInfo extends Component{
     state={
         avatar: '', avatarFile: null,
         f_name: '', l_name: '', f_nameErr: false, l_nameErr: false, f_nameEdited: false, l_nameEdited: false,
-        loading: false
+        loading: false,
+        imgProcess: false
     }
 
     _handleFileInputChange = (e) => {
         const file = e.target.files[0]
-        console.log(file)
-        // file && this.setState({
-        //     // avatar: URL.createObjectURL(file),
-        //     avatarFile: file
-        // })
-
-        file && Resizer.imageFileResizer(
-            file,
-            200,
-            200,
-            'JPEG',
-            100,
-            0,
-            blob => {
-                console.log('image converted')
-                const convertedFile = new File([blob], 'convertedImage.jpeg', {
-                    type: 'image/jpeg',
-                    lastModified: Date.now()
-                });
-                this.setState({
-                    avatar: URL.createObjectURL(convertedFile),
-                    avatarFile: convertedFile
+        if(file){
+            this.setState({imgProcess: true})
+            resizeImage(file, resizedImage => {
+                    this.setState({
+                    avatar: URL.createObjectURL(resizedImage),
+                    avatarFile: resizedImage,
+                    imgProcess: false
                 })
-                console.log(convertedFile)
-            },
-            'blob'
-        )
+            })
+        }
     }
 
     _fNameInputChange = e => this.setState({f_name: e.target.value.trim(), f_nameErr: false, f_nameEdited: true})
@@ -68,7 +50,6 @@ class PersonalInfo extends Component{
                 this._handleUpdateProfileRequest(data)
             }
             else{
-                console.log('errr')
                 !f_name.trim() && this.setState({f_nameErr: true})
                 !l_name.trim() && this.setState({l_nameErr: true})
             }
@@ -87,7 +68,10 @@ class PersonalInfo extends Component{
                 }
                 notify(notifyMsgs.EDIT_PROFILE_SUCCESS)
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                console.log(e)
+                notify(notifyMsgs.COMMON_ERR)
+            })
             .finally(() => this.changeLoadingState())
     }
 
@@ -96,17 +80,23 @@ class PersonalInfo extends Component{
         return (
             <div className='epn-info-box g-round-corner g-flex' >
                 <div className='c-avatar-container g-flex-ac' >
-                    <div className='c-avatar' >
-                        {f_name ? <ProfilePic 
-                                        src={(avatar && !this.state.avatarFile) ? avatarUrl : this.state.avatar} 
-                                        size={120} 
-                                        text={formatAvatarChar(f_name, l_name)} 
-                                        textSize={40} 
-                                    />
-                                : <div className='g-sklton-line g-skltn-bg-color' style={{width: 120, height: 120, borderRadius: '50%'}} />
-                        }
-                        <label htmlFor='file-input' ><EditIcon /></label>
-                    </div>
+                    {this.state.imgProcess ?
+                        <div className='img-process-div g-flex-ac' >
+                            <Spinner size={40} style={{margin: 'auto auto'}} />
+                        </div>
+                        :
+                        <div className='c-avatar' >
+                            {f_name ? <ProfilePic 
+                                            src={(avatar && !this.state.avatarFile) ? avatarUrl : this.state.avatar} 
+                                            size={120} 
+                                            text={formatAvatarChar(f_name, l_name)} 
+                                            textSize={40}
+                                        />
+                                    : <div className='g-sklton-line g-skltn-bg-color' style={{width: 120, height: 120, borderRadius: '50%'}} />
+                            }
+                            <label htmlFor='file-input' ><EditIcon /></label>
+                        </div>
+                    }
                     <input type='file' id='file-input' onChange={this._handleFileInputChange} accept='image/*' />
                 </div>
                 

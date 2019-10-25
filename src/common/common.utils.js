@@ -1,3 +1,5 @@
+import Resizer from 'react-image-file-resizer'
+
 import {LOCAL_STORAGE_LABLES} from './constants'
 import { fetchAvatar, avatarUrl } from '../apis/apis'
 import { store } from '../redux/Store'
@@ -41,6 +43,19 @@ const fetchAndStoreAvatar = async userId => {
 const getAvatarUrl = userId => localStorage ? localStorage.getItem('avatar') : avatarUrl(userId)
 function formatBytes(a,b){if(0===a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
 
+const resizeImage = (file, callback) => {
+    Resizer.imageFileResizer(file, 200, 200, 'JPEG', 100, 0,
+        blob => {
+            const resizedImage = new File([blob], 'convertedImage.jpeg', {
+                type: 'image/jpeg',
+                lastModified: Date.now()
+            })
+            callback(resizedImage)
+        },
+        'blob'
+    )
+}
+
 export {
     storeToken,
     getToken,
@@ -50,5 +65,6 @@ export {
     clearLocalStorage,
     fetchAndStoreAvatar,
     getAvatarUrl,
-    formatBytes
+    formatBytes,
+    resizeImage
 }

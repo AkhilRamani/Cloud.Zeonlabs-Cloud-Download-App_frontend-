@@ -10,15 +10,17 @@ import {CloudOff} from '../icons/icons'
 
 class FileList extends Component {
     state = {
-        loading: true,
-        userId: null
+        loading: true
     }
 
     componentDidMount(){
-        getAllFiles()
-            .then(res => res.data.forEach(file => this.props.addFile(file)))
-            .catch(e => console.log(e))
-            .finally(() => this.setState({loading: false}))
+        if(!this.props.files[0]){
+            getAllFiles()
+                .then(res => res.data.forEach(file => this.props.addFile(file)))
+                .catch(e => console.log(e))
+                .finally(() => this.setState({loading: false}))
+        }
+        else this.setState({loading: false})
     }
 
     render(){
