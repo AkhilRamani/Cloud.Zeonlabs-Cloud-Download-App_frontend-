@@ -22,6 +22,19 @@
 .header-menu{
     display: flex;
     flex-direction: row;
+
+    .header-menu-r-btn{
+        background-color: rgba(234, 244, 254, 0.712);
+        margin-left: 1.2rem;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        transition-duration: 0.2s;
+    }
+    .header-menu-r-btn:hover{
+        background-color: #EAF4FE;
+        cursor: pointer;
+    }
 }
 .h-pro-pic{
     margin-left: 1.2rem

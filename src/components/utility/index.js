@@ -11,6 +11,7 @@ import {notify} from './Notification/Notification.utility'
 import {NavHeader} from './NavHeader/NavHeader.utility'
 import {Typo} from './Typo/Typo.utility'
 import {FileTypeIcon} from './FileTypeIcon/FileTypeIcon.utility'
+import {OverlayLoader} from './OverlayLoader/OverlayLoader.utility'
 
 export {
     Button,
@@ -25,5 +26,6 @@ export {
     notify,
     NavHeader,
     Typo,
-    FileTypeIcon
+    FileTypeIcon,
+    OverlayLoader
 }

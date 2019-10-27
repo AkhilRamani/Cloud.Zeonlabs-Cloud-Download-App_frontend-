@@ -8,6 +8,7 @@ import {ProfilePic} from '../../utility'
 import {RoundIcon} from '../../icons/round.icon'
 import ProfileDDMenu from '../../DropDownMenu/ProfileDDMenu/ProfileDDMenu.component'
 import {formatAvatarChar} from '../../../Utils/utils'
+import { InfoIcon } from '../../icons/icons'
 
 const Header = (props) => {
     return (
@@ -17,6 +18,10 @@ const Header = (props) => {
                 <RoundIcon/>
                 <RoundIcon/>
                 
+                <div className='header-menu-r-btn g-flex-ac' >
+                    <InfoIcon style={{margin: 'auto', fill: '#003d7c61'}} />
+                </div>
+
                 {
                     props.authenticated &&
                     // isAuthenticated() &&

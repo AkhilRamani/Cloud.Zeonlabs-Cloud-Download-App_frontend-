@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -6,14 +6,16 @@ import './ProfileDDMenu.styles.scss'
 import {clearLocalStorage} from '../../../common/common.utils'
 import {logoutUser} from '../../../apis/apis'
 import {logout_redux} from '../../../redux/actions/user.actions'
-import {ProfilePic} from '../../utility'
+import {ProfilePic, OverlayLoader, notify} from '../../utility'
 import { formatAvatarChar } from '../../../Utils/utils';
 import {LogoutIcon, EditIcon} from '../../icons/icons'
-import { routes } from '../../../common/constants'
+import { routes, notifyMsgs } from '../../../common/constants'
 
 const ProfileDDMenu = (props) => {
+    const [oLoader, setOLoader] = useState(false)
 
     const _handleLogout = () => {
+        setOLoader(true)
         logoutUser()
             .then(res => {
                 // clearToken()
@@ -22,13 +24,19 @@ const ProfileDDMenu = (props) => {
                 props.logout_redux()
                 props.history.push('/auth')
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                console.log(e)
+                setOLoader(false)
+                notify(notifyMsgs.COMMON_ERR)
+            })
     }
 
     const _handleEditProfile = () => props.history.push(routes.EDIT_PROFILE)
 
     return(
         <div className='ddm-main h-ddm-main' >
+            <OverlayLoader active={oLoader} />
+
             <div className='g-flex-ac h-ddm-profile-div' >
                 <ProfilePic src={props.user.avatarUrl} text={formatAvatarChar(props.user.f_name, props.user.l_name)} size={78} />
                 <div style={{paddingLeft: 20}} >
