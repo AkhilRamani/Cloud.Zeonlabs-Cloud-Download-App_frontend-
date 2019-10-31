@@ -1,11 +1,19 @@
 .pi-m-container{
     padding: 20px;
     width: 350px;
+    background-image: linear-gradient(white, #0000000d);
+
+    .pi-sub-box{
+        // padding: 20px 20px 8px;
+        padding: 20px
+    }
+    .top-space{
+        margin-top: 20px;
+    }
 
     .pi-f-updates{
         // background-color: #1a87fe;
         background-color: #367ecd;
-        padding: 20px 20px 8px;
 
         h4, li{
             color: white;
@@ -23,11 +31,67 @@
             letter-spacing: 0.5px;
             font-weight: 600;
         }
+        .fu-icn-div{
+            flex-direction: column;
+            align-self: stretch;
+            justify-content: flex-end;
+            svg{
+                width: 90px;
+                height: 90px;
+                padding: 0;
+                opacity: 0.28;
+                margin: -13px -5px;
+            }
+        }
+    }
+
+    .pi-contact{
+        background-color: rgba(0, 0, 0, 0.082);
+        h4{
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+        p{
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.377);
+            line-height: 19px;
+
+            font{
+                font-weight: 600;
+            }
+        }
         svg{
-            width: 90px;
-            height: 90px;
-            padding: 0;
-            opacity: 0.28;
+            width: 120px;
+            height: 120px;
+            opacity: 0.13;
+            margin: -30px 0
+        }
+    }
+
+    .pi-dev-info{
+        padding: 20px;
+        background-color: rgb(235, 235, 235);
+        margin: 20px -20px -20px;
+        border-radius: 0 0 5px 5px;
+        justify-content: space-between;
+        p{
+            font-size: 14px;
+            opacity: 0.4;
+            font{
+                font-weight: 600;
+            }
+            svg{
+                width: 16px;
+                height: 16px;
+            }
+        }
+        .git-icn{
+            opacity: 0.3;
+            transition-duration: 0.14s;
+        }
+        .git-icn:hover{
+            opacity: 0.5;
+            cursor: pointer;
         }
     }
 }
