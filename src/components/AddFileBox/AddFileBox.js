@@ -61,14 +61,15 @@ class AddFileBox extends React.Component{
 
     render(){
         return(
-            <div className='drive-info-box'>
-                <div className='g-flex dib-c-box' >
-                <p className='main-title g-roboto' >Add file</p>
+            <div className='add-file-box g-round-corner'>
+                <div className='afb-c-box' >
+                    <h4 className='main-title g-roboto' >Add file</h4>
                     <UrlInputUpload loading={this.state.loading}
                         onSubmit={this.onUrlSubmit}
                         onChange={this.onInputChange}
                         value={this.state.urlText}
                     />
+                    <p className='g-roboto info-text'>* For Beta vesion, maximum file size is limited to 200mb.</p>
                 </div>
             </div>
         );

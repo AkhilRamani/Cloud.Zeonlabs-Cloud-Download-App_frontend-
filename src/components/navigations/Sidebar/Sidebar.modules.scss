@@ -21,12 +21,23 @@
             background-color: rgba(0, 0, 0, 0.089);
         }
     }
+    .sb-contents-div{
+        flex-direction: column;
+        justify-content: space-between;
+        height: calc(100vh - 148px);
 
-    .sb-inner{
-        padding: 30px 35px;
+        .sb-inner{
+            padding: 30px 35px;
+            h3{
+                color: #000F6C
+            }
+        }
 
-        h3{
-            color: #000F6C
+        svg{
+            align-self: center;
+            padding: 10px;
+            height: 28px;
+            opacity: 0.23;
         }
     }
 }

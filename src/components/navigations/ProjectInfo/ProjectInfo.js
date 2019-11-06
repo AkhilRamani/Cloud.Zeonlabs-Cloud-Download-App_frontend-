@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProjectInfo.styles.scss'
 import { Label } from '../../utility'
-import { UpdatesIcon, ContactIcon, GithubIcon, HeartIcon } from '../../icons/icons'
+import { UpdatesIcon, ContactIcon, GithubIcon, HeartIcon, LinkedinIcon } from '../../icons/icons'
 
 const ProjectInfo = () => {
     
@@ -35,7 +35,10 @@ const ProjectInfo = () => {
 
             <div className='pi-dev-info g-flex-ac' >
                 <p className='g-roboto g-flex-ac' >Made with&nbsp;<HeartIcon />&nbsp;by&nbsp;<font>Akhil Ramani</font></p>
-                <a href='https://www.github.com/akhilramani' target='_'><GithubIcon className='git-icn' /></a>
+                <div style={{height: 24}}>
+                    <a href='https://www.github.com/akhilramani' target='_'><GithubIcon className='social-icn' /></a>
+                    <a href='https://www.linkedin.com/in/akhil-ramani-630b51150' target='_'><LinkedinIcon className='social-icn'/></a>
+                </div>
             </div>
         </div>
     )

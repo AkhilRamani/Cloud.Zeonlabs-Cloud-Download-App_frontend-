@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import './Sidebar.modules.scss'
 import DriveInfo from '../../DriveInfo/DriveInfo'
-import { StorageIcon } from '../../icons/icons'
+import { StorageIcon, ZeonlabsIcon } from '../../icons/icons'
 import { Label } from '../../utility'
 
 const Sidebar = props => {
@@ -21,8 +21,11 @@ const Sidebar = props => {
                         : <div className='accnt-type-sclton g-sklton-line' />
                 }
             </div>
-            <div className='sb-inner' >
-                <DriveInfo />
+            <div className='g-flex sb-contents-div' >
+                <div className='sb-inner' >
+                    <DriveInfo />
+                </div>
+                <ZeonlabsIcon />
             </div>
         </div>
     )
