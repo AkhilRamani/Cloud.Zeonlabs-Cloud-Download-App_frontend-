@@ -5,6 +5,7 @@ import './Sidebar.modules.scss'
 import DriveInfo from '../../DriveInfo/DriveInfo'
 import { StorageIcon, ZeonlabsIcon } from '../../icons/icons'
 import { Label } from '../../utility'
+import { getPlanTitle } from '../../../common/common.utils'
 
 const Sidebar = props => {
     return(
@@ -17,7 +18,7 @@ const Sidebar = props => {
                 </div>
                 {
                     props.user.storage ?
-                        <Label.RoundSides title='Free Sandbox' color='#b52e2e70' />
+                        <Label.RoundSides title={getPlanTitle(props.user.plan)} color='#b52e2e70' />
                         : <div className='accnt-type-sclton g-sklton-line' />
                 }
             </div>

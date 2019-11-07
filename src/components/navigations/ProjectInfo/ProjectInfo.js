@@ -1,6 +1,5 @@
 import React from 'react'
 import './ProjectInfo.styles.scss'
-import { Label } from '../../utility'
 import { UpdatesIcon, ContactIcon, GithubIcon, HeartIcon, LinkedinIcon } from '../../icons/icons'
 
 const ProjectInfo = () => {

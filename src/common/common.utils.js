@@ -56,6 +56,14 @@ const resizeImage = (file, callback) => {
     )
 }
 
+const getPlanTitle = planId => {
+    switch(planId){
+        case 0: return 'Free Sandbox'
+        case 1: return 'Professional'
+        default: return null
+    }
+}
+
 export {
     storeToken,
     getToken,
@@ -66,5 +74,6 @@ export {
     fetchAndStoreAvatar,
     getAvatarUrl,
     formatBytes,
-    resizeImage
+    resizeImage,
+    getPlanTitle
 }

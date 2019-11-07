@@ -100,7 +100,7 @@ class Signup extends React.Component{
                     <div className='g-flex-ac' style={{flexDirection: 'column', border: 1, borderRadius: 5}} >
                         <SentMail style={{width:90, height:90, opacity: 0.8}} />
                         <h3 className='g-roboto login-text' style={{paddingTop: 10, opacity:0.8}} >Verify your email</h3>
-                        <p className='g-roboto login-sub-text' style={{textAlign: 'center'}} >We have sent you verification email. Go to your inbox and open it to verify your email address. Subsequently, your account will be activated. And thanks for signing up.</p>
+                        <p className='g-roboto login-sub-text' style={{textAlign: 'center', lineHeight: '19px'}} >We have sent you verification email. Go to your inbox and open it to verify your email address. Subsequently, your account will be activated. And thanks for signing up.</p>
                     </div>
                 </div>
             </div>)
