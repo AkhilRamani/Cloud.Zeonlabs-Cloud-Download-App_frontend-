@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {isEmail} from 'validator'
 
 import './Login.styles.scss'
 import { Button, Input, notify } from '../../../components/utility';
@@ -7,7 +8,6 @@ import {loginUser} from '../../../apis/apis'
 import {storeToken} from '../../../common/common.utils'
 import {notifyMsgs} from '../../../common/constants'
 import { fetchProfile } from '../../../apis/sendRequest.api';
-
 
 class Login extends  React.Component{
 
@@ -29,37 +29,40 @@ class Login extends  React.Component{
                     fetchProfile()
                     notify(notifyMsgs.LOGIN_MSG)
                 })
-                .catch(({response}) => {  
-                    switch(response.status){
-                        case 404:
-                            notify(notifyMsgs.NO_USER_FOUND)
-                            this.setInputErr('email')
-                            break
-
-                        case 401:
-                            notify(notifyMsgs.WRONG_PASS)
-                            this.setInputErr('password')
-                            break
-
-                        case 403:
-                            notify(notifyMsgs.UNVERIFIED_EMAIL)
-                            break
-
-                        default:
-                            console.log(response)
-                            notify(notifyMsgs.COMMON_ERR)
-                    }
+                .catch(e => {
+                    e && e.response ? this._handleError(e.response) : notify(notifyMsgs.COMMON_ERR)
                     this.changeLoadingState()
                 })
+    }
+
+    _handleError = response => {
+        switch(response.status){
+            case 404:
+                notify(notifyMsgs.NO_USER_FOUND)
+                this.setInputErr('email')
+                break
+
+            case 401:
+                notify(notifyMsgs.WRONG_PASS)
+                this.setInputErr('password')
+                break
+
+            case 403:
+                notify(notifyMsgs.UNVERIFIED_EMAIL)
+                break
+
+            default:
+                notify(notifyMsgs.COMMON_ERR)
+        }
     }
 
     _handleSubmit = () => {
         const {email, password} = this.state
 
-        !email.trim() && this.setInputErr('email')
-        !password.trim() && this.setInputErr('password')
+        !isEmail(email) && this.setInputErr('email')
+        password.length < 8 && this.setInputErr('password')
 
-        if(email.trim() && password.trim()){
+        if(isEmail(email) && password.length >= 8 ){
             this.changeLoadingState()
             this.handleLogin(email, password)
         }

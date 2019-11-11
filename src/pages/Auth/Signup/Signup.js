@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {isEmail} from 'validator'
 import _ from 'lodash'
 
 import {Input, Button, notify} from '../../../components/utility'
@@ -7,11 +8,12 @@ import {PRIMARY_COLOR} from '../../../styles/color.theme'
 import {createUser} from '../../../apis/apis'
 import {storeToken} from '../../../common/common.utils'
 import {SentMail} from '../../../components/icons/icons'
+import { notifyMsgs } from '../../../common/constants'
 
 class Signup extends React.Component{
     state = {
         f_name: '', l_name: '', email: '', password: '', cpassword: '', loading: false,
-        f_nameErr: false, l_nameErr: false , emailErr: false, passowrdErr: false, cpasswordErr: false,
+        f_nameErr: false, l_nameErr: false , emailErr: false, passwordErr: false, cpasswordErr: false,
         verifyScreen: false
     }
 
@@ -32,19 +34,22 @@ class Signup extends React.Component{
                 this.changeLoadingState()
                 this.setState({verifyScreen: true})
             })
-            .catch(({response}) =>{
-                switch(response.status){
-                    case 409:
-                        this.setInputErr('email')
-                        notify('User already registred!')
-                        break
-
-                    default:
-                        console.log(response)
-                        notify('Something went wrong!')
-                }
+            .catch(e =>{
+                e && e.response ? this._handleError(e.response) : notify(notifyMsgs.COMMON_ERR)
                 this.changeLoadingState()
             })
+    }
+
+    _handleError = response => {
+        switch(response.status){
+            case 409:
+                this.setInputErr('email')
+                notify('User already registred!')
+                break
+
+            default:
+                notify(notifyMsgs.COMMON_ERR)
+        }
     }
 
     _handleSubmit = () => {
@@ -52,13 +57,17 @@ class Signup extends React.Component{
 
         !f_name.trim() && this.setInputErr('f_name')
         !l_name.trim() && this.setInputErr('l_name')
-        !email.trim() && this.setInputErr('email')
-        !password.trim() && this.setInputErr('password')
-        !cpassword.trim() && this.setInputErr('cpassword')
-
-        if(f_name.trim() && l_name.trim() && email.trim() && password.trim()){
-            if(password.trim() === cpassword.trim()){
-                this.changeLoadingState();
+        !isEmail(email) && this.setInputErr('email')
+        if(password.length < 8) {
+            this.setInputErr('password')
+            password && notify('Password must be 8 characters long')
+        }
+        !cpassword && this.setInputErr('cpassword')
+        
+        if(f_name.trim() && l_name.trim() && isEmail(email) && password.length >= 8){
+            if(password === cpassword){
+                this.changeLoadingState()
+                this.setState(state => ({passwordErr: false, cpasswordErr: false}))
                 this.handleSignUP()
             }
             else{
@@ -84,7 +93,7 @@ class Signup extends React.Component{
                         <Input err={this.state.l_nameErr} style={{width: 140}} type='text' placeholder='Last name' className='auth-input' onChange={e => this._handleInputChange(e, 'l_name')} />
                     </div>
                     <Input err={this.state.emailErr} type='text' placeholder='email' className='auth-input' onChange={e => this._handleInputChange(e, 'email')}/>
-                    <Input err={this.state.passwordErr} type='password' placeholder='passowrd' className='auth-input' onChange={e => this._handleInputChange(e, 'password')}/>
+                    <Input err={this.state.passwordErr} type='password' placeholder='password' className='auth-input' onChange={e => this._handleInputChange(e, 'password')}/>
                     <Input err={this.state.cpasswordErr} type='password' placeholder='Confirm password' className='auth-input' onChange={e => this._handleInputChange(e, 'cpassword')}/>
 
                     <p align='center' className='g-roboto login-sub-text' style={{fontSize: 13}} >By clicking Sign up you agree with the <Link to='/tandc' style={{color: PRIMARY_COLOR.P_BLUE}} >terms of use</Link>.</p>
