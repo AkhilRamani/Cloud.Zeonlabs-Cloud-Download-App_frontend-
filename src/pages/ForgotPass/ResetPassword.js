@@ -16,15 +16,21 @@ class ResetPassword extends Component{
 
     _handleSubmit = () => {
         const {pass, cPass} = this.state
-        if(pass.trim() && cPass.trim()){
-            if(pass.trim() === cPass.trim()) this.handleResetPassword()
+        if(pass.trim() && cPass.trim() && pass.trim().length >= 8){
+            if(pass.trim() === cPass.trim()){
+                this.handleResetPassword()
+                this.setState({passErr: false, cPassErr: false})
+            }
             else{
                 this.setInputErr('pass')
                 this.setInputErr('cPass')
             }
         }
         else{
-            !pass.trim() && this.setInputErr('pass')
+            if(pass.trim().length < 8){
+                this.setInputErr('pass')
+                pass.trim() && notify(notifyMsgs.PASS_LENGTH_ERR)
+            }
             !cPass.trim() && this.setInputErr('cPass')
         }
     }
@@ -32,12 +38,12 @@ class ResetPassword extends Component{
     handleResetPassword = async () => {
         this.changeLoadingState()
         try{
-            await resetPassword(this.props.match.params.uuid, this.state.pass)
+            await resetPassword(this.props.match.params.uuid, this.state.pass.trim())
             this.setState({successScreen: true})
             notify(notifyMsgs.PASS_RESET_SUCCESS)
         }
-        catch({response}){
-            if(response.status === 404) notify(notifyMsgs.INVALID_PASS_RESET_URL)
+        catch(e){
+            if(e.response && e.response.status === 404) notify(notifyMsgs.INVALID_PASS_RESET_URL)
             else notify(notifyMsgs.COMMON_ERR)
         }
         this.changeLoadingState()

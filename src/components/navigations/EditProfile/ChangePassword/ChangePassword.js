@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import { Input, Button, notify } from '../../../utility'
 import { notifyMsgs } from '../../../../common/constants'
 import { updatePassword } from '../../../../apis/apis'
+import { isValidPassword, trimObject } from '../../../../common/common.utils'
 
 class ChangePassword extends Component{
     state = {
@@ -18,12 +20,13 @@ class ChangePassword extends Component{
     _cPassInputChange = e => this._handleTextInput('cPassword', e)
 
     _handleSubmit = () => {
-        const {old_password, password, cPassword} = this.state
+        const {old_password, password, cPassword} = trimObject(_.pick(this.state, ['old_password', 'password', 'cPassword']))
         
-        if(old_password && password && cPassword && (old_password !== password)){
+        if(old_password && isValidPassword(password) && cPassword && (old_password !== password)){
             if(password === cPassword){
                 this.chnageLoadingState()
                 this._handleRequest(old_password, password)
+                this.setState({passwordErr: false, cPasswordErr: false})
             }
             else{
                 this.setState({passwordErr: true, cPasswordErr: true})
@@ -32,7 +35,10 @@ class ChangePassword extends Component{
         }
         else{
             !old_password && this.setState({old_passwordErr: true})
-            !password && this.setState({passwordErr: true})
+            if(!isValidPassword(password)){
+                this.setState({passwordErr: true})
+                password && notify(notifyMsgs.PASS_LENGTH_ERR)
+            }
             !cPassword && this.setState({cPasswordErr: true})
         }
     }
@@ -45,7 +51,7 @@ class ChangePassword extends Component{
             this.chnageLoadingState()
         }
         catch(e){
-            if(e.response.status === 401){
+            if(e.response && e.response.status === 401){
                 this.setState({old_passwordErr: true})
                 notify(notifyMsgs.WRONG_PASS)
             }

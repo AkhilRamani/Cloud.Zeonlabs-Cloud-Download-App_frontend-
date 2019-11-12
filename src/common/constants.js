@@ -18,6 +18,7 @@ const notifyMsgs = {
     DOWNLD_FAILED: 'File downloading failed',
     EDIT_PROFILE_SUCCESS: 'Profile updated',
     PASS_RESET_SUCCESS: 'Password changed successfully',
+    PASS_LENGTH_ERR: 'Password must be 8 characters long',
     FORGOT_PASS_REQ_SENT: 'Password reset email sent',
     
     COMMON_ERR: 'Something went wrong!',
@@ -30,6 +31,7 @@ const notifyMsgs = {
     INVALID_PASS_RESET_URL: 'Invalid password reset url',
     PASS_NOT_MATCH: 'Password does not match',
 
+    FILE_SIZE_GREATER_200MB: 'Could not process, file size is more then 200MB',
     INVALID_FILE_URL: 'Invalid url to proceed',
     FILE_NO_FOUND: 'File not found or unprocessable',
     NO_STORG_SPACE: 'insufficient storage space to download'

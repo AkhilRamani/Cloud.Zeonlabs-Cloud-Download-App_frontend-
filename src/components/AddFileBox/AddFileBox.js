@@ -39,6 +39,9 @@ class AddFileBox extends React.Component{
         catch(e){
             if(e.response){
                 switch(e.response.status){
+                    case 412:
+                        notify(notifyMsgs.FILE_SIZE_GREATER_200MB)
+                        break
                     case 422:
                         notify(notifyMsgs.INVALID_FILE_URL)
                         break

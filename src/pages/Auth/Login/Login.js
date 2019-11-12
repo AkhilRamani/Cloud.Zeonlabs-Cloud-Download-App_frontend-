@@ -5,7 +5,7 @@ import {isEmail} from 'validator'
 import './Login.styles.scss'
 import { Button, Input, notify } from '../../../components/utility';
 import {loginUser} from '../../../apis/apis'
-import {storeToken} from '../../../common/common.utils'
+import {storeToken, isValidPassword, trimObject} from '../../../common/common.utils'
 import {notifyMsgs} from '../../../common/constants'
 import { fetchProfile } from '../../../apis/sendRequest.api';
 
@@ -21,7 +21,7 @@ class Login extends  React.Component{
     setInputErr = (property) => this.setState({[`${property}Err`]: true})
 
     handleLogin = (email, password) => {
-        loginUser({email, password})
+        loginUser(trimObject({email, password}))
                 .then(res => {
                     storeToken(res.data.token)
                     this.changeLoadingState()
@@ -59,10 +59,10 @@ class Login extends  React.Component{
     _handleSubmit = () => {
         const {email, password} = this.state
 
-        !isEmail(email) && this.setInputErr('email')
-        password.length < 8 && this.setInputErr('password')
+        !isEmail(email.trim()) && this.setInputErr('email')
+        !isValidPassword(password) && this.setInputErr('password')
 
-        if(isEmail(email) && password.length >= 8 ){
+        if(isEmail(email.trim()) && isValidPassword(password) ){
             this.changeLoadingState()
             this.handleLogin(email, password)
         }

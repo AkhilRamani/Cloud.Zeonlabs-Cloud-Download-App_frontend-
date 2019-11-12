@@ -15,6 +15,8 @@ const isValidUrl = url =>{
     return res ? true : false
 }
 
+const isValidPassword = pass => pass.trim().length < 8 ? false : true
+
 const getFileSharingUrl = fileId => `https://cloud.zeonlabs.co/file=share/${fileId}`
 
 const convertToBase64 = data => {
@@ -64,16 +66,27 @@ const getPlanTitle = planId => {
     }
 }
 
+const trimObject = obj =>  {
+    return Object.keys(obj).reduce((result, key) => {
+      let keyTrimmed = key.trim(),
+          valTrimmed = obj[key].trim();
+      result[keyTrimmed] = valTrimmed;
+      return result;
+    }, {});
+  }
+
 export {
     storeToken,
     getToken,
     clearToken,
     isValidUrl,
+    isValidPassword,
     getFileSharingUrl,
     clearLocalStorage,
     fetchAndStoreAvatar,
     getAvatarUrl,
     formatBytes,
     resizeImage,
-    getPlanTitle
+    getPlanTitle,
+    trimObject
 }

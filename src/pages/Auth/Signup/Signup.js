@@ -6,7 +6,7 @@ import _ from 'lodash'
 import {Input, Button, notify} from '../../../components/utility'
 import {PRIMARY_COLOR} from '../../../styles/color.theme'
 import {createUser} from '../../../apis/apis'
-import {storeToken} from '../../../common/common.utils'
+import {storeToken, isValidPassword, trimObject} from '../../../common/common.utils'
 import {SentMail} from '../../../components/icons/icons'
 import { notifyMsgs } from '../../../common/constants'
 
@@ -28,7 +28,7 @@ class Signup extends React.Component{
     changeLoadingState = () => this.setState(state => ({loading: !state.loading}))
 
     handleSignUP = () => {
-        createUser(_.pick(this.state, 'f_name', 'l_name', 'email', 'password'))
+        createUser(trimObject(_.pick(this.state, 'f_name', 'l_name', 'email', 'password')))
             .then(res => {
                 storeToken(res.data.token)
                 this.changeLoadingState()
@@ -57,17 +57,18 @@ class Signup extends React.Component{
 
         !f_name.trim() && this.setInputErr('f_name')
         !l_name.trim() && this.setInputErr('l_name')
-        !isEmail(email) && this.setInputErr('email')
-        if(password.length < 8) {
+        !isEmail(email.trim()) && this.setInputErr('email')
+
+        if(!isValidPassword(password)) {
             this.setInputErr('password')
-            password && notify('Password must be 8 characters long')
+            password.trim() && notify(notifyMsgs.PASS_LENGTH_ERR)
         }
-        !cpassword && this.setInputErr('cpassword')
+        !cpassword.trim() && this.setInputErr('cpassword')
         
-        if(f_name.trim() && l_name.trim() && isEmail(email) && password.length >= 8){
-            if(password === cpassword){
+        if(f_name.trim() && l_name.trim() && isEmail(email.trim()) && isValidPassword(password)){
+            if(password.trim() === cpassword.trim()){
                 this.changeLoadingState()
-                this.setState(state => ({passwordErr: false, cpasswordErr: false}))
+                this.setState({passwordErr: false, cpasswordErr: false})
                 this.handleSignUP()
             }
             else{
