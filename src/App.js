@@ -30,8 +30,8 @@ function App() {
 				<Route path={routes.T_AND_C} exact component={TandC} />
 				<Route path={routes.DOWNLD_FILE} exact component={DownloadFile} />
 
-				<ProtectedRoute path='/' exact component={MainApp} />
-				<ProtectedRoute path='/edit/profile' exact component={EditProfile} />
+				<ProtectedRoute path={routes.APP} exact component={MainApp} />
+				<ProtectedRoute path={routes.EDIT_PROFILE} exact component={EditProfile} />
 
 				<Route component={() => <h3>Not found</h3>} />
 

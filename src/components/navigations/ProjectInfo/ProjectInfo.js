@@ -5,7 +5,7 @@ import { UpdatesIcon, ContactIcon, GithubIcon, HeartIcon, LinkedinIcon } from '.
 const ProjectInfo = () => {
     
     return (
-        <div className='pi-m-container' >
+        <div className='pi-m-container g-round-corner' >
             <div className='pi-f-updates pi-sub-box g-round-corner' >
                 <div className='g-flex-ac'>
                     <h4 className='g-roboto' >Future updates</h4>

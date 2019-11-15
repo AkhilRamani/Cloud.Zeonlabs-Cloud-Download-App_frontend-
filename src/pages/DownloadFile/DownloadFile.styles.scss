@@ -28,7 +28,53 @@
     }
 
     .df-botm-box{
-        background-color: white;
-        padding: 20px 50px;
+        // padding: 20px 50px;
+        justify-content: flex-end;
+
+        .df-botm-r-box{
+            background-color: white;
+            padding: 20px 20px 20px 25px;
+            margin: 10px;
+
+            svg{
+                width: 195px;
+                height: 160px;
+            }
+            @media only screen and (max-width: 768px) {
+                svg{
+                    width: 190px;
+                    height: 155px;
+                }
+            }
+
+            .detail-div{
+                max-width: 220px;
+                align-self: stretch;
+                margin-left: 20px;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 5px;
+
+                h3{
+                    opacity: 0.9;
+                }
+                .onegb-txt{
+                    font-size: 15.3px;
+                }
+                font{
+                    font-weight: 600;
+                    color: rgba(0, 0, 0, 0.582);
+                }
+                .detail-txt{
+                    color: #c2c2c2;
+                    font-size: 15px;
+                    line-height: 19px;
+                    margin: 10px 0 10px
+                }
+                a{
+                    align-self: flex-end;
+                }
+            }
+        }
     }
 }

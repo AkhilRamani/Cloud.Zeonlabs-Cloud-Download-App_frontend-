@@ -50,9 +50,6 @@ const Header = (props) => {
                                         text={formatAvatarChar(props.user.f_name, props.user.l_name)} 
                                         className='h-pro-pic' />
                                     </div>}
-                                // position='bottom right'
-                                // closeOnDocumentClick
-                                // contentStyle={{padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', borderRadius: 5, width: 'auto' }}
                                 {...popupProps}
                             >
                                 <ProfileDDMenu />
