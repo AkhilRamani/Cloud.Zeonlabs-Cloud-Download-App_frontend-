@@ -6,7 +6,7 @@ import { HeaderBottomSpace } from './header/HeaderBottomSpace'
 
 export const HeaderSidebarWrapper = ({children}) => (
     <>
-        <Header authenticated />
+        <Header />
         <HeaderBottomSpace />
 
         <div className='g-main-container' >

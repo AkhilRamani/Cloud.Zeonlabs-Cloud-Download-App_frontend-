@@ -1,15 +1,17 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import './Header.modules.scss'
-import {ProfilePic} from '../../utility'
+import {ProfilePic, Logo} from '../../utility'
 import {RoundIcon} from '../../icons/round.icon'
 import ProfileDDMenu from '../../DropDownMenu/ProfileDDMenu/ProfileDDMenu.component'
 import {formatAvatarChar} from '../../../Utils/utils'
 import { InfoIcon } from '../../icons/icons'
 import ProjectInfo from '../ProjectInfo/ProjectInfo'
+import { isAuthenticated } from '../../../common/common.auth'
+import { routes } from '../../../common/constants'
 
 
 const popupProps = {
@@ -18,10 +20,10 @@ const popupProps = {
     contentStyle: {padding: 0, border: 'none', boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', borderRadius: 5, width: 'auto' }
 }
 
-const Header = (props) => {
+const Header = props => {
     return (
         <div className="header-container" >
-            <h2 className='header-logo g-source-sans'><font style={{color: '#FDD235'}} >Cloud.</font>Zeonlabs</h2>
+            <Link to={routes.APP} className='header-logo'><Logo /></Link>
             <div className='header-menu' >
                 {/* <RoundIcon/> */}
                 <RoundIcon/>
@@ -38,8 +40,7 @@ const Header = (props) => {
                 </Popup>
 
                 {
-                    props.authenticated &&
-                    // isAuthenticated() &&
+                    isAuthenticated() &&
                     (
                         !props.user.f_name ?
                             <RoundIcon className='g-sklton-line h-pro-pic' />

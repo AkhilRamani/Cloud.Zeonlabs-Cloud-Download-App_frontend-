@@ -3,20 +3,26 @@ import {withRouter} from 'react-router-dom'
 import { FileTypeIcon, Button } from '../../../components/utility'
 import { getFile } from '../../../apis/apis'
 import { formatBytes } from '../../../Utils/utils'
+import { WarnigIcon } from '../../../components/icons/icons'
 
 const FileInfo = props => {
     const [fileInfo, setFileInfo] = useState({name: '', size: null, type: ''})
+    const [fileFetchErr, setFileFetchErr] = useState(null)
 
     useEffect(() => {
         getFile(props.match.params.id)
             .then(res => {
                 setFileInfo(res.data)
             })
-            .catch(e => {})
+            .catch(e => {
+                if(e.response && e.response.status === 404) setFileFetchErr('The requested file is not available or deleted by the user.')
+                else setFileFetchErr('Something went wrong! Please try again later.')
+            })
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [])
 
     return (
+        !fileFetchErr ?
         <>
             <div className='g-flex df-wb-f-info' >
                 {fileInfo.name ? 
@@ -46,6 +52,11 @@ const FileInfo = props => {
                 }
             </div>
         </>
+        :
+        <div className='g-flex-ac df-err-box' >
+            <WarnigIcon className='err-svg' />
+            <p className='g-roboto' >{fileFetchErr}</p>
+        </div>
     )
 }
 

@@ -20,10 +20,34 @@
         .df-wb-f-info{
             width: 100%
         }
+
+        .df-err-box{
+            width: 100%;
+            margin: -10px;
+            .err-svg{
+                fill: #ff4343;
+                width: 35px;
+                height: 35px;
+            }
+            p{
+                color:#ff4343;
+                line-height: 19px;
+                padding: 0;
+                margin-left: 20px;
+                font-weight: 600;
+            }
+        }
     }
     @media only screen and (max-width: 768px) {
         .df-wb{
             min-width: 77%;
+
+            .df-err-box{
+                .err-svg{
+                    width: 50px;
+                    height: 50px;
+                }
+            }
         }
     }
 
@@ -35,6 +59,7 @@
             background-color: white;
             padding: 20px 20px 20px 25px;
             margin: 10px;
+            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.295);
 
             svg{
                 width: 195px;
