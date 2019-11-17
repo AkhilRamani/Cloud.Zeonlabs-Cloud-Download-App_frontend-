@@ -22,10 +22,13 @@ const popupProps = {
 
 const Header = props => {
     return (
-        <div className="header-container" >
-            <Link to={routes.APP} className='header-logo'><Logo /></Link>
-            <div className='header-menu' >
-                {/* <RoundIcon/> */}
+        <div className="header-container g-flex-ac" >
+            <Link to={routes.APP} className='header-logo g-flex-ac'>
+                <Logo />
+                <p className='g-roboto'>Beta</p>
+            </Link>
+
+            <div className='g-flex' >
                 <RoundIcon/>
 
                 <Popup
@@ -45,7 +48,7 @@ const Header = props => {
                         !props.user.f_name ?
                             <RoundIcon className='g-sklton-line h-pro-pic' />
                         :   <Popup 
-                                trigger={<div style={{cursor: 'pointer'}} >
+                                trigger={<div className='header-pro-pic'>
                                     <ProfilePic 
                                         src={props.user.avatarUrl} 
                                         text={formatAvatarChar(props.user.f_name, props.user.l_name)} 
