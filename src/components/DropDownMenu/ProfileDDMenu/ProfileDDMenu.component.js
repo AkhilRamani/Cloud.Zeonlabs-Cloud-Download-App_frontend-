@@ -10,6 +10,7 @@ import {ProfilePic, OverlayLoader, notify} from '../../utility'
 import { formatAvatarChar } from '../../../Utils/utils';
 import {LogoutIcon, EditIcon} from '../../icons/icons'
 import { routes, notifyMsgs } from '../../../common/constants'
+import { socket } from '../../../apis/socket/socket'
 
 const ProfileDDMenu = (props) => {
     const [oLoader, setOLoader] = useState(false)
@@ -22,10 +23,10 @@ const ProfileDDMenu = (props) => {
                 clearLocalStorage()
                 //clear redux store
                 props.logout_redux()
+                socket.removeAllListeners()
                 props.history.push('/auth')
             })
             .catch(e => {
-                console.log(e)
                 setOLoader(false)
                 notify(notifyMsgs.COMMON_ERR)
             })

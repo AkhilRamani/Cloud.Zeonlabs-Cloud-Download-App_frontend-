@@ -17,6 +17,6 @@ export const fetchProfile = async () => {
         socketFileStatusListener(res.data._id)
     }
     catch(e){
-        console.log(e)
+        console.log(e) //handle unautorized case
     }
 }
