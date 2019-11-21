@@ -4,7 +4,8 @@ const fileStatus = {
     FAILED: 'failed'
 }
 
-const serverUrl = 'http://localhost:3001';
+// const serverUrl = 'http://localhost:3001';
+const serverUrl = 'https://zeon-cloud.herokuapp.com'
 
 const LOCAL_STORAGE_LABLES = {
     TOKEN: 'TOKEN'
