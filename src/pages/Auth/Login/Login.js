@@ -64,7 +64,7 @@ class Login extends  React.Component{
 
         if(isEmail(email.trim()) && isValidPassword(password) ){
             this.changeLoadingState()
-            this.handleLogin(email, password)
+            this.handleLogin(email.toLowerCase(), password)
         }
     }
 

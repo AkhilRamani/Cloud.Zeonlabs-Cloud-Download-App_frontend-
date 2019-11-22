@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {isURL} from 'validator'
 
 import './DriveInfoBox.styles.scss'
 import {addFile} from '../../redux/actions/file.action'
 import {increaseUsedSpace} from '../../redux/actions/user.actions'
 import {UrlInputUpload, notify} from '../utility'
 import {uploadFile} from '../../apis/apis'
-import { isValidUrl } from '../../common/common.utils'
 import { notifyMsgs } from '../../common/constants'
 
 class AddFileBox extends React.Component{
@@ -19,7 +19,7 @@ class AddFileBox extends React.Component{
 
     onUrlSubmit = async () => {
         if(!this.state.urlText) return null
-        if(isValidUrl(this.state.urlText)){
+        if(isURL(this.state.urlText, {require_protocol: true, allow_underscores: true})){
             this.handleFileDownloadRequest(this.state.urlText)
         }
         else{
