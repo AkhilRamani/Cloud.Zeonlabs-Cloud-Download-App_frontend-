@@ -11,7 +11,7 @@ import { routes } from '../../common/constants'
 
 const DownloadFile = () => {
     return (
-        <div className='df-main'>
+        <div className='df-main' style={{height: `calc(${window.innerHeight}px)`}}>
             <Header />
             <HeaderBottomSpace />
 

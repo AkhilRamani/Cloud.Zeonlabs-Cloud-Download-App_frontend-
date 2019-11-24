@@ -22,7 +22,7 @@ const Sidebar = props => {
                         : <div className='accnt-type-sclton g-sklton-line' />
                 }
             </div>
-            <div className='g-flex sb-contents-div' >
+            <div className='g-flex sb-contents-div' style={{height: `calc(${window.innerHeight}px - 148px)`}} >
                 <div className='sb-inner' >
                     <DriveInfo />
                 </div>

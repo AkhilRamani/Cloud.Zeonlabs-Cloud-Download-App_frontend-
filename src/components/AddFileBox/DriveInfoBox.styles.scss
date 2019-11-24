@@ -2,6 +2,10 @@
     background-color: #1A87FE;
     padding: 25px 35px 25px 35px;
 
+    @media only screen and (max-width: 768px) {
+            width: fit-content;
+    }
+
     .afb-c-box{
         width: 100%;
 
