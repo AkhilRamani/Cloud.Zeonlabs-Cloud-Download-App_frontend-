@@ -1,6 +1,7 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import TimeAgo from 'react-timeago'
+// import TimeAgo from 'react-timeago'
+import TimeAgoReact from 'timeago-react'
 
 import './FileItem.styles.scss'
 import {DotIcon} from '../icons/dotMenu.icon'
@@ -21,7 +22,10 @@ const FileItem = ({id, name, size, time, status, type}) => {
                     <div className='fi-inner-container g-flex-ac' >
                         <div className='g-flex-ac' >
                             <div className="fi-dot" />
-                            <p className='fi-file-date g-roboto' ><TimeAgo date={time} /> &nbsp;&bull;&nbsp;  {formatBytes(size)} &nbsp;&bull;&nbsp; Downloading</p>
+                            {/* <p className='fi-file-date g-roboto' ><TimeAgo date={time}/> &nbsp;&bull;&nbsp;  {formatBytes(size)} &nbsp;&bull;&nbsp; Downloading</p> */}
+                            <p className='fi-file-date g-roboto' >
+                                <TimeAgoReact datetime={time}  /> &nbsp;&bull;&nbsp;  {formatBytes(size)} &nbsp;&bull;&nbsp; Downloading
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -44,7 +48,7 @@ const FileItem = ({id, name, size, time, status, type}) => {
                         <div className='g-flex-ac' >
                             <div className="fi-dot" />
                             <p className='fi-file-date g-roboto' >
-                                <TimeAgo date={time} /> &nbsp;&bull;&nbsp;  {formatBytes(size)} {status==='failed' && <>&nbsp;&bull;&nbsp; <font className='fi-failed-lable' >Failed</font></>}
+                                <TimeAgoReact datetime={time} /> &nbsp;&bull;&nbsp;  {formatBytes(size)} {status==='failed' && <>&nbsp;&bull;&nbsp; <font className='fi-failed-lable' >Failed</font></>}
                             </p>
                         </div>
                     </div>

@@ -1,7 +1,10 @@
+import {isJWT} from 'validator'
 import {getToken} from './common.utils'
 
 const isAuthenticated = () => {
-    return getToken() ? true : false
+    const token = getToken()
+    return token ? isJWT(token) ? true : false
+                 : false
 }
 
 export {
