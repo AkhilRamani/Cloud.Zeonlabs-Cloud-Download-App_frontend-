@@ -15,9 +15,9 @@ const TandC  = props => {
                     <NavHeader title={<font style={{fontSize: 19}}>Terms and Conditions</font>} onBackClick={onBackButtonClick} style={{marginLeft: -12}} />
                     <div style={{height: 20}} />
 
-                    <p>Welcome to Cloud.Zeonlabs!</p>
+                    <p>Welcome to Cloud.Zeonlabs(Zeon Cloud).</p>
 
-                    <p>These terms and conditions outline the rules and regulations for the use of Zeonlabs's Website, located at Cloud.Zeonlabs.com.</p>
+                    <p>These terms and conditions outline the rules and regulations for the use of Zeonlabs's Zeon Cloud Website, located at Cloud.Zeonlabs.co</p>
 
                     <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Cloud.Zeonlabs if you do not agree to take all of the terms and conditions stated on this page.</p>
 
