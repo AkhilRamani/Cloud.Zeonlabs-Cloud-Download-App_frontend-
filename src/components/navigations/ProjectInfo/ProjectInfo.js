@@ -27,7 +27,7 @@ const ProjectInfo = () => {
             <div className='pi-contact pi-sub-box g-round-corner top-space g-flex-ac' >
                 <div className='' >
                     <h4 className='g-roboto'>Contact</h4>
-                    <p className='g-roboto'>Report bugs, Give suggestions, Fire queries at <font>zeonlabs@outlook.com</font></p>
+                    <p className='g-roboto'>Report bugs, Give suggestions, Fire queries at <font>support@zeonlabs.co</font></p>
                 </div>
                 <ContactIcon />
             </div>
